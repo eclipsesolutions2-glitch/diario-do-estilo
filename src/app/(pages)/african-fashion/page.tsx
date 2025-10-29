@@ -1,4 +1,3 @@
-import Image from "next/image";
 import ArticleCard from "@/components/layout/home/article-card";
 import { Button } from "@/components/ui/button";
 
