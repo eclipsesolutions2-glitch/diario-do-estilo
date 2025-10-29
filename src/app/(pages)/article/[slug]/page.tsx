@@ -239,8 +239,12 @@ export default async function ArtigoPage({
 							title: "Street Style: As Ruas de Lagos Como Passarela",
 							image: "/stylish-african-street-fashion-in-lagos-nigeria-ur.jpg",
 						},
-					].map((article, i) => (
-						<Link key={i} href="/artigo/exemplo" className="group">
+					].map((article) => (
+						<Link
+							key={article.title}
+							href="/artigo/exemplo"
+							className="group"
+						>
 							<div className="relative aspect-3/4 overflow-hidden rounded-lg mb-4">
 								<Image
 									src={article.image || "/placeholder.svg"}

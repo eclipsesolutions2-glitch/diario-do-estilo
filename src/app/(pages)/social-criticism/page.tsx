@@ -72,9 +72,9 @@ export default function SocialCriticismPage() {
 					Artigos de Opinião
 				</h2>
 				<div className="max-w-4xl mx-auto space-y-8">
-					{opinionArticles.map((article, index) => (
+					{opinionArticles.map((article) => (
 						<article
-							key={index}
+							key={article.title}
 							className="border-b border-border pb-8 last:border-0"
 						>
 							<p className="text-xs text-primary uppercase tracking-wider mb-2">
@@ -108,9 +108,9 @@ export default function SocialCriticismPage() {
 					Vozes da Mudança
 				</h2>
 				<div className="max-w-4xl mx-auto space-y-12">
-					{activistInterviews.map((interview, index) => (
+					{activistInterviews.map((interview) => (
 						<article
-							key={index}
+							key={interview.name}
 							className="flex flex-col md:flex-row gap-6 items-start"
 						>
 							<div className="md:w-1/3">
@@ -135,8 +135,8 @@ export default function SocialCriticismPage() {
 					A Realidade em Números
 				</h2>
 				<div className="grid md:grid-cols-4 gap-8">
-					{sustainabilityData.map((data, index) => (
-						<div key={index} className="text-center">
+					{sustainabilityData.map((data) => (
+						<div key={data.label} className="text-center">
 							<p className="text-4xl md:text-5xl font-serif text-primary mb-2">
 								{data.stat}
 							</p>

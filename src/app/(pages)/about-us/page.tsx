@@ -191,8 +191,8 @@ export default function AboutUs() {
 				</section>
 
 				<div className="grid md:grid-cols-2 lg:grid-cols-3 gap-12">
-					{teamMembers.map((member, i) => (
-						<div key={i} className="text-center group">
+					{teamMembers.map((member) => (
+						<div key={member.name} className="text-center group">
 							<div className="relative aspect-square w-full max-w-xs mx-auto mb-6 overflow-hidden rounded-lg">
 								<Image
 									src={member.image}

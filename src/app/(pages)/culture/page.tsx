@@ -98,8 +98,8 @@ export default function CulturePage() {
 					Vozes da Cultura
 				</h2>
 				<div className="grid md:grid-cols-2 gap-12">
-					{interviews.map((interview, index) => (
-						<article key={index} className="group">
+					{interviews.map((interview) => (
+						<article key={interview.name} className="group">
 							<div className="relative aspect-square mb-6 overflow-hidden rounded-lg">
 								<Image
 									src={interview.image || "/placeholder.svg"}
@@ -134,8 +134,8 @@ export default function CulturePage() {
 					Influências Culturais
 				</h2>
 				<div className="max-w-4xl mx-auto grid md:grid-cols-3 gap-8">
-					{culturalInfluences.map((influence, index) => (
-						<article key={index} className="text-center">
+					{culturalInfluences.map((influence) => (
+						<article key={influence.title} className="text-center">
 							<div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
 								<span className="text-2xl">🎭</span>
 							</div>
@@ -160,8 +160,8 @@ export default function CulturePage() {
 				</h2>
 				<div className="max-w-3xl mx-auto">
 					<div className="relative border-l-2 border-primary/30 pl-8 space-y-12">
-						{timeline.map((item, index) => (
-							<div key={index} className="relative">
+						{timeline.map((item) => (
+							<div key={item.event} className="relative">
 								<div className="absolute -left-[41px] w-8 h-8 bg-primary rounded-full border-4 border-background" />
 								<p className="text-2xl font-serif text-primary mb-2">
 									{item.year}
@@ -181,9 +181,9 @@ export default function CulturePage() {
 					Destaques da Comunidade
 				</h2>
 				<div className="grid md:grid-cols-3 gap-8">
-					{communityHighlights.map((highlight, index) => (
+					{communityHighlights.map((highlight) => (
 						<article
-							key={index}
+							key={highlight.title}
 							className="border border-border rounded-lg p-6 hover:border-primary transition-colors"
 						>
 							<h3 className="text-xl font-serif mb-3">

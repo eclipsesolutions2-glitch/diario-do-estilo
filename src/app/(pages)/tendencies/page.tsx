@@ -100,7 +100,7 @@ export default function TendenciesPage() {
 				<div className="grid md:grid-cols-3 gap-8">
 					{featuredTrends.map((trend) => (
 						<article key={trend.id} className="group">
-							<div className="relative aspect-[3/4] mb-4 overflow-hidden rounded-lg">
+							<div className="relative aspect-3/4 mb-4 overflow-hidden rounded-lg">
 								<Image
 									src={trend.image || "/placeholder.svg"}
 									alt={trend.title}
@@ -130,9 +130,9 @@ export default function TendenciesPage() {
 					Análises
 				</h2>
 				<div className="max-w-4xl mx-auto space-y-8">
-					{analyses.map((analysis, index) => (
+					{analyses.map((analysis) => (
 						<article
-							key={index}
+							key={analysis.title}
 							className="border-l-2 border-primary pl-6 hover:border-primary/60 transition-colors"
 						>
 							<h3 className="text-2xl font-serif mb-2">
@@ -163,10 +163,10 @@ export default function TendenciesPage() {
 					Galeria de Estilos
 				</h2>
 				<div className="grid md:grid-cols-2 gap-6">
-					{styleGallery.map((item, index) => (
+					{styleGallery.map((item) => (
 						<figure
-							key={index}
-							className="group relative aspect-[4/3] overflow-hidden rounded-lg"
+							key={item.caption}
+							className="group relative aspect-4/3 overflow-hidden rounded-lg"
 						>
 							<Image
 								src={item.image || "/placeholder.svg"}
@@ -174,7 +174,7 @@ export default function TendenciesPage() {
 								fill
 								className="object-cover transition-transform duration-500 group-hover:scale-105"
 							/>
-							<figcaption className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex items-end p-6">
+							<figcaption className="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent flex items-end p-6">
 								<p className="text-white text-lg font-serif">
 									{item.caption}
 								</p>
