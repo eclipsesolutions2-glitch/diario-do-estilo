@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { Analytics } from "@vercel/analytics/next";
 import { NuqsAdapter } from "nuqs/adapters/next/app";
 import { Footer } from "@/components/layout/footer";
 import { Header } from "@/components/layout/header";
@@ -22,6 +23,7 @@ export default function RootLayout({
 					<main className="flex-1">{children}</main>
 					<Footer />
 				</NuqsAdapter>
+				<Analytics />
 			</body>
 		</html>
 	);
