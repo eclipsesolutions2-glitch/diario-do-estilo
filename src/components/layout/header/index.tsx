@@ -1,10 +1,11 @@
 "use client";
-import { Menu, User } from "lucide-react";
+import { Menu } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { HeaderLoggedUser } from "./header-logged-user";
 import { HeaderSearch } from "./header-search";
 
 export function Header() {
@@ -57,18 +58,14 @@ export function Header() {
 
 					<Link href="/">
 						<h1 className="font-serif text-2xl md:text-4xl font-bold tracking-tight cursor-pointer">
-							<span className="text-[#0D7377]">Diário</span>{" "}
+							<span className="text-primary">Diário</span>{" "}
 							<span className="text-foreground">Do Estilo</span>
 						</h1>
 					</Link>
 
 					<div className="flex items-center gap-2">
 						<HeaderSearch />
-						<Link href="/sign-in">
-							<Button variant="ghost" size="icon">
-								<User className="h-5 w-5" />
-							</Button>
-						</Link>
+						<HeaderLoggedUser />
 					</div>
 				</div>
 			</div>
@@ -81,9 +78,9 @@ export function Header() {
 								<Link
 									href={`/${category.slug}`}
 									className={cn(
-										"text-foreground hover:text-[#0D7377] transition-colors uppercase tracking-wide",
+										"text-foreground hover:text-primary transition-colors uppercase tracking-wide",
 										pathname.includes(category.slug) &&
-											"text-[#0D7377]",
+											"text-primary",
 									)}
 								>
 									{category.name}
@@ -98,7 +95,7 @@ export function Header() {
 								<li key={category.slug}>
 									<Link
 										href={`/${category.slug}`}
-										className="block text-foreground hover:text-[#0D7377] transition-colors uppercase tracking-wide text-sm font-medium"
+										className="block text-foreground hover:text-primary transition-colors uppercase tracking-wide text-sm font-medium"
 										onClick={() => setIsMenuOpen(false)}
 									>
 										{category.name}

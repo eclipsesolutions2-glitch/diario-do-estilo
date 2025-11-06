@@ -21,7 +21,7 @@ export function LinksList() {
 				<span key={item.href}>
 					<Link
 						href={item.href}
-						className="text-[#0D7377] hover:underline"
+						className="text-primary hover:underline"
 					>
 						{item.label}
 					</Link>

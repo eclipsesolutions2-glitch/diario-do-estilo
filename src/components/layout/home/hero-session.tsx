@@ -8,7 +8,7 @@ export default function HeroSection() {
 		<section className="relative h-[70vh] md:h-[85vh] bg-muted overflow-hidden">
 			<div className="absolute inset-0">
 				<Image
-					src="/elegant-african-fashion-model-in-contemporary-desi.jpg"
+					src="/images/elegant-african-fashion-model-in-contemporary-desi.jpg"
 					alt="Moda Africana Contemporânea"
 					className="w-full h-full object-cover"
 					fill
@@ -18,7 +18,7 @@ export default function HeroSection() {
 
 			<div className="relative h-full max-w-7xl mx-auto px-4 md:px-6 flex items-end pb-12 md:pb-20">
 				<div className="max-w-3xl text-white">
-					<div className="inline-block px-3 py-1 bg-[#0D7377] text-white text-xs font-semibold uppercase tracking-wider mb-4">
+					<div className="inline-block px-3 py-1 bg-primary text-white text-xs font-semibold uppercase tracking-wider mb-4">
 						Moda Africana
 					</div>
 					<h2 className="font-serif text-4xl md:text-6xl lg:text-7xl font-bold mb-4 text-balance leading-tight">

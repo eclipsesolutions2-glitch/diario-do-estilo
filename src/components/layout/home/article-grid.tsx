@@ -8,7 +8,7 @@ const articles = [
 		title: "Tecidos Tradicionais Africanos Dominam as Passarelas Europeias",
 		excerpt:
 			"O Ankara e o Kente ganham destaque nas coleções de alta costura, celebrando a herança cultural africana.",
-		image: "/colorful-african-ankara-fabric-patterns-on-fashion.jpg",
+		image: "/images/colorful-african-ankara-fabric-patterns-on-fashion.jpg",
 		author: "Maria Santos",
 		date: "15 de Outubro, 2025",
 	},
@@ -18,7 +18,7 @@ const articles = [
 		title: "A Influência da Arte Africana no Design Contemporâneo",
 		excerpt:
 			"Como a estética africana está moldando o futuro do design de moda e acessórios.",
-		image: "/african-art-inspired-contemporary-fashion-accessor.jpg",
+		image: "/images/african-art-inspired-contemporary-fashion-accessor.jpg",
 		author: "João Ferreira",
 		date: "12 de Outubro, 2025",
 	},
@@ -28,7 +28,7 @@ const articles = [
 		title: "Moda Sustentável: Lições dos Artesãos Africanos",
 		excerpt:
 			"A sabedoria ancestral africana oferece soluções para a crise de sustentabilidade na moda.",
-		image: "/african-artisan-creating-sustainable-fashion-handm.jpg",
+		image: "/images/african-artisan-creating-sustainable-fashion-handm.jpg",
 		author: "Ana Costa",
 		date: "10 de Outubro, 2025",
 	},
@@ -38,7 +38,7 @@ const articles = [
 		title: "Designers Emergentes da África Ocidental",
 		excerpt:
 			"Conheça os novos talentos que estão revolucionando a indústria da moda com perspectivas frescas.",
-		image: "/young-african-fashion-designer-working-in-modern-s.jpg",
+		image: "/images/young-african-fashion-designer-working-in-modern-s.jpg",
 		author: "Pedro Alves",
 		date: "8 de Outubro, 2025",
 	},
@@ -48,7 +48,7 @@ const articles = [
 		title: "Beleza Natural: O Movimento de Aceitação Capilar",
 		excerpt:
 			"Celebrando a textura natural e a diversidade dos cabelos afro na indústria da beleza.",
-		image: "/beautiful-african-woman-with-natural-afro-hair-bea.jpg",
+		image: "/images/beautiful-african-woman-with-natural-afro-hair-bea.jpg",
 		author: "Carla Mendes",
 		date: "5 de Outubro, 2025",
 	},
@@ -58,7 +58,7 @@ const articles = [
 		title: "Street Style: As Ruas de Lagos Como Passarela",
 		excerpt:
 			"O estilo urbano nigeriano que está inspirando fashionistas ao redor do mundo.",
-		image: "/stylish-african-street-fashion-in-lagos-nigeria-ur.jpg",
+		image: "/images/stylish-african-street-fashion-in-lagos-nigeria-ur.jpg",
 		author: "Ricardo Silva",
 		date: "3 de Outubro, 2025",
 	},
@@ -73,7 +73,7 @@ export default function ArticleGrid() {
 				</h2>
 				<Link
 					href="#"
-					className="text-[#0D7377] hover:text-[#0A5F62] font-medium text-sm uppercase tracking-wider transition-colors"
+					className="text-primary hover:text-[#0A5F62] font-medium text-sm uppercase tracking-wider transition-colors"
 				>
 					Ver Todas
 				</Link>

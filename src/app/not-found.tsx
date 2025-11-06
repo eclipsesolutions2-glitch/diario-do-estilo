@@ -13,7 +13,7 @@ export default function NotFoundPage() {
 			<Link href="/" className="mt-6">
 				<Button
 					variant="outline"
-					className="border-gray-300 text-gray-700 hover:bg-gray-100 hover:text-[#0D7377] transition"
+					className="border-gray-300 text-gray-700 hover:bg-gray-100 hover:text-primary transition"
 				>
 					Voltar ao início
 				</Button>

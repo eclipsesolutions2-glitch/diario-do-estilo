@@ -19,20 +19,20 @@ export function ArticleCard({ article }: { article: Article }) {
 			<article className="group cursor-pointer">
 				<div className="relative aspect-4/5 mb-4 overflow-hidden bg-muted">
 					<Image
-						src={article.image || "/placeholder.svg"}
+						src={article.image || "/images/placeholder.svg"}
 						alt={article.title}
 						className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
 						fill
 					/>
 					<div className="absolute top-4 left-4">
-						<span className="inline-block px-3 py-1 bg-white text-[#0D7377] text-xs font-semibold uppercase tracking-wider">
+						<span className="inline-block px-3 py-1 bg-white text-primary text-xs font-semibold uppercase tracking-wider">
 							{article.category}
 						</span>
 					</div>
 				</div>
 
 				<div className="space-y-3">
-					<h3 className="font-serif text-xl md:text-2xl font-bold leading-tight text-balance group-hover:text-[#0D7377] transition-colors">
+					<h3 className="font-serif text-xl md:text-2xl font-bold leading-tight text-balance group-hover:text-primary transition-colors">
 						{article.title}
 					</h3>
 					<p className="text-muted-foreground text-sm leading-relaxed text-pretty">
@@ -46,7 +46,7 @@ export function ArticleCard({ article }: { article: Article }) {
 							<span className="mx-2">•</span>
 							<span>{article.date}</span>
 						</div>
-						<ArrowRight className="h-4 w-4 text-[#0D7377] opacity-0 group-hover:opacity-100 transition-opacity" />
+						<ArrowRight className="h-4 w-4 text-primary opacity-0 group-hover:opacity-100 transition-opacity" />
 					</div>
 				</div>
 			</article>

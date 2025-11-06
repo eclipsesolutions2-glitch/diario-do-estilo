@@ -46,7 +46,7 @@ export function HeaderSearch() {
 				<Button
 					variant="ghost"
 					size="icon"
-					className="text-gray-700 hover:text-[#0D7377]"
+					className="text-gray-700 hover:text-primary"
 				>
 					<Search className="h-5 w-5" />
 				</Button>
@@ -104,7 +104,7 @@ export function HeaderSearch() {
 				</ScrollArea>
 				<div className="border-t border-gray-200 p-3 text-center text-xs text-gray-500">
 					Descubra mais no{" "}
-					<span className="text-[#0D7377] font-semibold">
+					<span className="text-primary font-semibold">
 						Diário do Estilo
 					</span>
 				</div>

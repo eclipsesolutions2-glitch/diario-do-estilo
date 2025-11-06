@@ -1,0 +1,20 @@
+POST https://diario-do-estilo-api-1-0-0.onrender.com//api/v1/register HTTP/1.1
+content-type: application/json
+
+{
+  "name": "John Doe",
+  "username": "johndoe",
+  "email": "john@example.com",
+  "password": "password123",
+  "password_confirmation": "password123",
+  "role": "reader"
+}
+
+## 
+POST https://diario-do-estilo-api-1-0-0.onrender.com//api/v1/login HTTP/1.1
+content-type: application/json
+
+{
+  "login": "john@example.com",
+  "password": "password123"
+}

@@ -9,8 +9,8 @@ export function Footer() {
 					<div className="md:col-span-2">
 						<Link href="/">
 							<h3 className="font-serif text-2xl font-bold mb-4 cursor-pointer">
-								<span className="text-[#0D7377]">Diário</span>{" "}
-								Do Estilo
+								<span className="text-primary">Diário</span> Do
+								Estilo
 							</h3>
 						</Link>
 						<p className="text-muted-foreground text-sm leading-relaxed max-w-md mb-6">
@@ -23,7 +23,7 @@ export function Footer() {
 								href="https://instagram.com"
 								target="_blank"
 								rel="noopener noreferrer"
-								className="min-w-10 w-10 min-h-10 h-10 rounded-full bg-[#0D7377] text-white flex items-center justify-center hover:bg-[#0A5F62] transition-colors"
+								className="min-w-10 w-10 min-h-10 h-10 rounded-full bg-primary text-white flex items-center justify-center hover:bg-[#0A5F62] transition-colors"
 							>
 								<Instagram className="h-5 w-5" />
 							</Link>
@@ -31,7 +31,7 @@ export function Footer() {
 								href="https://facebook.com"
 								target="_blank"
 								rel="noopener noreferrer"
-								className="min-w-10 w-10 min-h-10 h-10 rounded-full bg-[#0D7377] text-white flex items-center justify-center hover:bg-[#0A5F62] transition-colors"
+								className="min-w-10 w-10 min-h-10 h-10 rounded-full bg-primary text-white flex items-center justify-center hover:bg-[#0A5F62] transition-colors"
 							>
 								<Facebook className="h-5 w-5" />
 							</Link>
@@ -46,7 +46,7 @@ export function Footer() {
 							<li>
 								<Link
 									href="/african-fashion"
-									className="text-muted-foreground hover:text-[#0D7377] transition-colors"
+									className="text-muted-foreground hover:text-primary transition-colors"
 								>
 									Moda Africana
 								</Link>
@@ -54,7 +54,7 @@ export function Footer() {
 							<li>
 								<Link
 									href="/tendencies"
-									className="text-muted-foreground hover:text-[#0D7377] transition-colors"
+									className="text-muted-foreground hover:text-primary transition-colors"
 								>
 									Tendências
 								</Link>
@@ -62,7 +62,7 @@ export function Footer() {
 							<li>
 								<Link
 									href="/culture"
-									className="text-muted-foreground hover:text-[#0D7377] transition-colors"
+									className="text-muted-foreground hover:text-primary transition-colors"
 								>
 									Cultura
 								</Link>
@@ -70,7 +70,7 @@ export function Footer() {
 							<li>
 								<Link
 									href="/categoria/critica-social"
-									className="text-muted-foreground hover:text-[#0D7377] transition-colors"
+									className="text-muted-foreground hover:text-primary transition-colors"
 								>
 									Crítica Social
 								</Link>
@@ -86,7 +86,7 @@ export function Footer() {
 							<li>
 								<Link
 									href="/about-us"
-									className="text-muted-foreground hover:text-[#0D7377] transition-colors"
+									className="text-muted-foreground hover:text-primary transition-colors"
 								>
 									Quem Somos
 								</Link>
@@ -94,7 +94,7 @@ export function Footer() {
 							<li>
 								<Link
 									href="/about-us#equipe"
-									className="text-muted-foreground hover:text-[#0D7377] transition-colors"
+									className="text-muted-foreground hover:text-primary transition-colors"
 								>
 									Equipe
 								</Link>
@@ -102,7 +102,7 @@ export function Footer() {
 							<li>
 								<Link
 									href="/contact"
-									className="text-muted-foreground hover:text-[#0D7377] transition-colors"
+									className="text-muted-foreground hover:text-primary transition-colors"
 								>
 									Contato
 								</Link>
@@ -110,7 +110,7 @@ export function Footer() {
 							<li>
 								<Link
 									href="/advertise"
-									className="text-muted-foreground hover:text-[#0D7377] transition-colors"
+									className="text-muted-foreground hover:text-primary transition-colors"
 								>
 									Anuncie
 								</Link>
@@ -126,19 +126,19 @@ export function Footer() {
 					<div className="flex items-center gap-6">
 						<Link
 							href="/terms/privacy-policy"
-							className="hover:text-[#0D7377] transition-colors"
+							className="hover:text-primary transition-colors"
 						>
 							Política de Privacidade
 						</Link>
 						<Link
 							href="/terms"
-							className="hover:text-[#0D7377] transition-colors"
+							className="hover:text-primary transition-colors"
 						>
 							Termos de Uso
 						</Link>
 						<Link
 							href="/terms/cookies"
-							className="hover:text-[#0D7377] transition-colors"
+							className="hover:text-primary transition-colors"
 						>
 							Cookies
 						</Link>

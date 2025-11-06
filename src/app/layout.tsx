@@ -2,9 +2,6 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/next";
 import { NuqsAdapter } from "nuqs/adapters/next/app";
-import { Suspense } from "react";
-import { Footer } from "@/components/layout/footer";
-import { Header } from "@/components/layout/header";
 
 export const metadata: Metadata = {
 	title: "Diário Do Estilo",
@@ -20,11 +17,7 @@ export default function RootLayout({
 		<html lang="pt">
 			<body className="flex flex-col min-h-dvh">
 				<NuqsAdapter>
-					<Suspense fallback={null}>
-						<Header />
-					</Suspense>
 					<main className="flex-1">{children}</main>
-					<Footer />
 				</NuqsAdapter>
 				<Analytics />
 			</body>
