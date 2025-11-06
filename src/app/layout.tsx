@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/next";
 import { NuqsAdapter } from "nuqs/adapters/next/app";
+import { Toaster } from "@/components/ui/sonner";
 
 export const metadata: Metadata = {
 	title: "Diário Do Estilo",
@@ -19,6 +20,7 @@ export default function RootLayout({
 				<NuqsAdapter>
 					<main className="flex-1">{children}</main>
 				</NuqsAdapter>
+				<Toaster />
 				<Analytics />
 			</body>
 		</html>

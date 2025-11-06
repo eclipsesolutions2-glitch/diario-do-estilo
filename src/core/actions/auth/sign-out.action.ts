@@ -1,5 +1,6 @@
 "use server";
 
+import { revalidateTag } from "next/cache";
 import { cookies } from "next/headers";
 import {
 	type ApiResponse,
@@ -20,7 +21,7 @@ export async function signOutAction(): Promise<ApiResponse<boolean>> {
 
 		const response = await fetch(`${API_URL}/api/v1/auth/logout`, {
 			method: "POST",
-			headers: { Authorization: `Bearer ${token}` },
+			headers: { Authorization: `Bearer ${token.value}` },
 		});
 
 		const data = await response.json().catch(() => null);
@@ -32,6 +33,7 @@ export async function signOutAction(): Promise<ApiResponse<boolean>> {
 		}
 
 		storage.delete("dds-auth.session-token");
+		revalidateTag("user-session", "max");
 		return ResponseMapper.success(true);
 	} catch (error) {
 		console.error("❌ Erro inesperado no logout: ", error);

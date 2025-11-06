@@ -25,6 +25,9 @@ export async function getSession(): Promise<ApiResponse<User>> {
 				Authorization: `Bearer ${token.value}`,
 				Accept: "aplication/json",
 			},
+			next: {
+				tags: ["user-session"],
+			},
 		});
 
 		const data = await response.json().catch(() => null);

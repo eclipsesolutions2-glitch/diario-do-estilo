@@ -31,6 +31,9 @@ export function useSession() {
 							Authorization: `Bearer ${token}`,
 						},
 						signal,
+						next: {
+							tags: ["user-session"],
+						},
 					},
 				);
 
