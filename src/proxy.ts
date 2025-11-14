@@ -26,7 +26,7 @@ const publicRoutes = [
 ] as const;
 const REDIRECT_WHEN_NOT_AUTHENTICATED_ROUTE = "/sign-in";
 
-export function middleware(request: NextRequest) {
+export function proxy(request: NextRequest) {
 	const requestHeaders = new Headers(request.headers);
 	requestHeaders.set("x-url", request.url);
 

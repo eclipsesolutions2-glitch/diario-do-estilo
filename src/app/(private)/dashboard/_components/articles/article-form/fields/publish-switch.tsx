@@ -1,0 +1,33 @@
+import type { UseFormReturn } from "react-hook-form";
+import {
+	FormControl,
+	FormField,
+	FormItem,
+	FormLabel,
+} from "@/components/ui/form";
+import { Switch } from "@/components/ui/switch";
+import type { CreateArticleSchemaValues } from "@/core/schemas/article/create-article.schema";
+
+export default function PublishSwitch({
+	form,
+}: {
+	form: UseFormReturn<CreateArticleSchemaValues>;
+}) {
+	return (
+		<FormField
+			control={form.control}
+			name="is_published"
+			render={({ field }) => (
+				<FormItem className="flex items-center gap-2">
+					<FormLabel>Publicar</FormLabel>
+					<FormControl>
+						<Switch
+							checked={field.value}
+							onCheckedChange={field.onChange}
+						/>
+					</FormControl>
+				</FormItem>
+			)}
+		/>
+	);
+}
