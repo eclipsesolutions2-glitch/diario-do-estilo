@@ -1,16 +1,21 @@
-import { DirectboxNotif, Home2, UserSquare } from "iconsax-reactjs";
+import { FileText, Home, LayoutGrid, UserSquare } from "lucide-react";
 
 export const NAV_LINKS = {
 	geral: [
 		{
 			label: "Overview",
 			href: "/dashboard",
-			icon: Home2,
+			icon: Home,
 		},
 		{
 			label: "Artigos",
 			href: "/dashboard/article",
-			icon: DirectboxNotif,
+			icon: FileText,
+		},
+		{
+			label: "Categorias",
+			href: "/dashboard/categories",
+			icon: LayoutGrid,
 		},
 	],
 	admin: [

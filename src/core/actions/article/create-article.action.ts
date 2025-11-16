@@ -8,7 +8,7 @@ import {
 import {
 	type ApiResponse,
 	ResponseMapper,
-} from "@/core/schemas/default.meppers";
+} from "@/core/schemas/default.mappers";
 
 export async function CreateArticleAction(
 	data: CreateArticleSchemaValues,

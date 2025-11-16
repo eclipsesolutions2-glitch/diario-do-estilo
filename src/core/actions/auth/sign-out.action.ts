@@ -5,7 +5,7 @@ import { cookies } from "next/headers";
 import {
 	type ApiResponse,
 	ResponseMapper,
-} from "@/core/schemas/default.meppers";
+} from "@/core/schemas/default.mappers";
 import { env } from "@/lib/env";
 
 export async function signOutAction(): Promise<ApiResponse<boolean>> {

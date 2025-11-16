@@ -1,5 +1,5 @@
 "use client";
-import { LogoutCurve, NotificationBing } from "iconsax-reactjs";
+import { Bell, LogOut } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
@@ -43,7 +43,7 @@ export function Header() {
 					size="icon"
 					onClick={auth.signOut}
 				>
-					<LogoutCurve className="size-5 rotate-180" />
+					<LogOut className="size-5" />
 				</Button>
 			</>
 		);
@@ -53,7 +53,7 @@ export function Header() {
 		<header className="sticky top-0 left-0 z-50 w-full border-b border-dashed bg-white/70 dark:bg-background/70 backdrop-blur-sm">
 			<div className="h-16 px-4 flex items-center justify-between md:justify-end">
 				<div className="flex items-center gap-4">
-					<NotificationBing className="size-5" />
+					<Bell className="size-5" />
 					<Separator orientation="vertical" className="min-h-5" />
 					{ComponentView}
 				</div>
