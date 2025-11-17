@@ -1,5 +1,5 @@
 "use client";
-import { Moon, Sun1 } from "iconsax-reactjs";
+import { Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 import { Switch } from "@/components/ui/switch";
@@ -19,7 +19,7 @@ export const ThemeToggle = () => {
 	return (
 		<div className="flex items-center gap-1.5 px-4 py-2">
 			{isDark ? (
-				<Sun1 className="w-5 h-5" />
+				<Sun className="w-5 h-5" />
 			) : (
 				<Moon className="w-5 h-5" />
 			)}

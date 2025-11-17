@@ -1,4 +1,4 @@
-import { Star } from "iconsax-reactjs";
+import { Star } from "lucide-react";
 import Image from "next/image";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
