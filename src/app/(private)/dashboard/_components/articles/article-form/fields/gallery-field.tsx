@@ -1,4 +1,8 @@
+"use client";
+import { AlertCircleIcon, ImageIcon, UploadIcon, X } from "lucide-react";
+import Image from "next/image";
 import type { UseFormReturn } from "react-hook-form";
+import { Button } from "@/components/ui/button";
 import {
 	FormControl,
 	FormField,
@@ -6,6 +10,7 @@ import {
 	FormLabel,
 	FormMessage,
 } from "@/components/ui/form";
+import { useFileUpload } from "@/core/hooks/use-file-upload";
 import type { CreateArticleSchemaValues } from "@/core/schemas/article/create-article.schema";
 
 export default function GalleryField({
@@ -13,6 +18,28 @@ export default function GalleryField({
 }: {
 	form: UseFormReturn<CreateArticleSchemaValues>;
 }) {
+	const maxSizeMB = 5;
+	const maxSize = maxSizeMB * 1024 * 1024; // 5MB default
+	const maxFiles = 6;
+
+	const [
+		{ files, isDragging, errors },
+		{
+			handleDragEnter,
+			handleDragLeave,
+			handleDragOver,
+			handleDrop,
+			openFileDialog,
+			removeFile,
+			getInputProps,
+		},
+	] = useFileUpload({
+		accept: "image/svg+xml,image/png,image/jpeg,image/jpg,image/gif",
+		maxSize,
+		multiple: true,
+		maxFiles,
+	});
+
 	return (
 		<FormField
 			control={form.control}
@@ -21,14 +48,117 @@ export default function GalleryField({
 				<FormItem>
 					<FormLabel>Galeria (várias imagens)</FormLabel>
 					<FormControl>
-						<input
-							type="file"
-							accept="image/*"
-							multiple
-							onChange={(e) =>
-								field.onChange(Array.from(e.target.files || []))
-							}
-						/>
+						<div className="flex flex-col gap-2">
+							{/** biome-ignore lint/a11y/noStaticElementInteractions: false */}
+							<div
+								onDragEnter={handleDragEnter}
+								onDragLeave={handleDragLeave}
+								onDragOver={handleDragOver}
+								onDrop={handleDrop}
+								data-dragging={isDragging || undefined}
+								data-files={files.length > 0 || undefined}
+								className="relative flex min-h-52 flex-col items-center overflow-hidden rounded-xl border border-dashed border-input p-4 transition-colors not-data-files:justify-center has-[input:focus]:border-ring has-[input:focus]:ring-[3px] has-[input:focus]:ring-ring/50 data-[dragging=true]:bg-accent/50"
+							>
+								<input
+									{...getInputProps()}
+									onChange={(e) =>
+										field.onChange(
+											Array.from(e.target.files || []),
+										)
+									}
+									className="sr-only"
+									aria-label="Upload image file"
+								/>
+
+								{files.length > 0 ? (
+									<div className="flex w-full flex-col gap-3">
+										<div className="flex items-center justify-between gap-2">
+											<h3 className="truncate text-sm font-medium">
+												Arquivos enviados (
+												{files.length})
+											</h3>
+											<Button
+												variant="outline"
+												size="sm"
+												onClick={openFileDialog}
+												disabled={
+													files.length >= maxFiles
+												}
+											>
+												<UploadIcon
+													className="-ms-0.5 size-3.5 opacity-60"
+													aria-hidden="true"
+												/>
+												Adicionar mais
+											</Button>
+										</div>
+
+										<div className="grid grid-cols-2 gap-4 md:grid-cols-3">
+											{files.map((file) => (
+												<div
+													key={file.id}
+													className="relative aspect-square rounded-md bg-accent"
+												>
+													<Image
+														src={file.preview ?? ""}
+														alt={file.file.name}
+														fill
+														className="size-full rounded-[inherit] object-cover"
+													/>
+													<Button
+														onClick={() =>
+															removeFile(file.id)
+														}
+														size="icon"
+														className="absolute -top-2 -right-2 size-6 rounded-full border-2 border-background shadow-none focus-visible:border-background"
+														aria-label="Remove image"
+													>
+														<X className="size-3.5" />
+													</Button>
+												</div>
+											))}
+										</div>
+									</div>
+								) : (
+									<div className="flex flex-col items-center justify-center px-4 py-3 text-center">
+										<div
+											className="mb-2 flex size-11 shrink-0 items-center justify-center rounded-full border bg-background"
+											aria-hidden="true"
+										>
+											<ImageIcon className="size-4 opacity-60" />
+										</div>
+										<p className="mb-1.5 text-sm font-medium">
+											Deixe suas imagens aqui
+										</p>
+										<p className="text-xs text-muted-foreground">
+											SVG, PNG, JPG or GIF (max.{" "}
+											{maxSizeMB}MB)
+										</p>
+										<Button
+											variant="outline"
+											className="mt-4"
+											onClick={openFileDialog}
+										>
+											<UploadIcon
+												className="-ms-1 opacity-60"
+												aria-hidden="true"
+											/>
+											Selecione imagens
+										</Button>
+									</div>
+								)}
+
+								{errors.length > 0 && (
+									<div
+										className="flex items-center gap-1 text-xs text-destructive"
+										role="alert"
+									>
+										<AlertCircleIcon className="size-3 shrink-0" />
+										<span>{errors[0]}</span>
+									</div>
+								)}
+							</div>
+						</div>
 					</FormControl>
 					<FormMessage />
 				</FormItem>
@@ -36,3 +166,14 @@ export default function GalleryField({
 		/>
 	);
 }
+
+/* <input
+									type="file"
+									accept="image/*"
+									multiple
+									onChange={(e) =>
+										field.onChange(
+											Array.from(e.target.files || []),
+										)
+									}
+								/> */

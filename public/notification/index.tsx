@@ -1,4 +1,42 @@
-"use client";
+import { Bell } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import {
+	Popover,
+	PopoverContent,
+	PopoverTrigger,
+} from "@/components/ui/popover";
+
+interface NotificationToggleProps {
+	data: Notification[];
+	onMarkAllAsRead?: () => void;
+}
+
+export function NotificationToggle({
+	data: notifications,
+	onMarkAllAsRead,
+}: NotificationToggleProps) {
+	return (
+		<Popover>
+			<PopoverTrigger asChild>
+				<Button
+					variant="outline"
+					size="icon"
+					className="h-9 w-9 relative"
+					aria-label="Abrir notificações"
+				>
+					<Bell className="h-4 w-4" />
+					<span className="sr-only">Notificações</span>
+				</Button>
+			</PopoverTrigger>
+			<PopoverContent
+				align="end"
+				className="w-[450px] max-w-[450px] space-y-2 p-0"
+			></PopoverContent>
+		</Popover>
+	);
+}
+
+/* "use client";
 
 import { Ban, Bell, Keyboard, ShoppingBag, Star, Wallet } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -79,9 +117,9 @@ export const NotificationToggle = ({
 						{notifications ? (
 							notifications.length > 0 ? (
 								<div className="flex flex-col gap-1 divide-y-2 divide-neutral-200 dark:divide-neutral-800">
-									{notifications.map((notify) => (
+									{/* {notifications.map((notify) => (
 										<div>{notify}</div>
-									))}
+									))} 
 								</div>
 							) : (
 								<NotificationEmptyState />
@@ -97,7 +135,7 @@ export const NotificationToggle = ({
 			</PopoverContent>
 		</Popover>
 	);
-};
+}; */
 
 /* <NotificationItem key={notify.id}>
 											<NotificationItemIcon

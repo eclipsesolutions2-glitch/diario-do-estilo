@@ -3,6 +3,20 @@
 
 @custom-variant dark (&:is(.dark *));
 
+@theme {
+	--brand-50: #eefdfc;
+	--brand-100: #d4f9f8;
+	--brand-200: #aef3f3;
+	--brand-300: #75e9eb;
+	--brand-400: #36d5da;
+	--brand-500: #1ab9c0;
+	--brand-600: #1a9ca9;
+	--brand-700: #1b7883;
+	--brand-800: #1e616c;
+	--brand-900: #1e515b;
+	--brand-950: #0e353e;
+}
+
 @theme inline {
 	--radius-sm: calc(var(--radius) - 4px);
 	--radius-md: calc(var(--radius) - 2px);

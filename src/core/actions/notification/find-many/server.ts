@@ -5,6 +5,7 @@ import {
 	type ApiResponse,
 	ResponseMapper,
 } from "@/core/schemas/default.mappers";
+import type { Notification } from "@/core/schemas/notificaiton.chema";
 import { env } from "@/lib/env";
 
 export async function findManyNotificationAction(): Promise<
@@ -39,7 +40,7 @@ export async function findManyNotificationAction(): Promise<
 		}
 
 		return ResponseMapper.success(
-			data.data,
+			data,
 			"Notificações carregadas com sucesso.",
 		);
 	} catch (error) {
