@@ -78,6 +78,7 @@ export default function GalleryField({
 												{files.length})
 											</h3>
 											<Button
+												type="button"
 												variant="outline"
 												size="sm"
 												onClick={openFileDialog}
@@ -106,6 +107,7 @@ export default function GalleryField({
 														className="size-full rounded-[inherit] object-cover"
 													/>
 													<Button
+														type="button"
 														onClick={() =>
 															removeFile(file.id)
 														}
@@ -135,6 +137,7 @@ export default function GalleryField({
 											{maxSizeMB}MB)
 										</p>
 										<Button
+											type="button"
 											variant="outline"
 											className="mt-4"
 											onClick={openFileDialog}

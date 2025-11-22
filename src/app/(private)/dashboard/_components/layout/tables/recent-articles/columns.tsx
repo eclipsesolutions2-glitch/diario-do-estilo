@@ -1,20 +1,7 @@
 import type { ColumnDef } from "@tanstack/react-table";
-import { MoreVertical } from "lucide-react";
 import Image from "next/image";
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import {
-	DropdownMenu,
-	DropdownMenuContent,
-	DropdownMenuLabel,
-	DropdownMenuSeparator,
-	DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
 import type { Article } from "@/core/schemas/article";
-import { CategoryMoreAction } from "./actions/category-more-action";
-import { DeleteMoreAction } from "./actions/delete-more-action";
-import { InfoMoreAction } from "./actions/info-more-action";
-import { UpdateMoreAction } from "./actions/update-more-action";
 
 export const columns: ColumnDef<Article>[] = [
 	// ID
@@ -155,31 +142,6 @@ export const columns: ColumnDef<Article>[] = [
 			<div className="text-center text-muted-foreground">
 				{/* {formatDate(row.original.updated_at)} */}
 			</div>
-		),
-	},
-
-	// ACTIONS
-	{
-		id: "actions",
-		header: undefined,
-		cell: ({ row }) => (
-			<DropdownMenu>
-				<DropdownMenuTrigger asChild>
-					<Button variant="outline" size="icon">
-						<MoreVertical className="h-4 w-4" />
-					</Button>
-				</DropdownMenuTrigger>
-
-				<DropdownMenuContent align="end" className="w-40">
-					<DropdownMenuLabel>Ações</DropdownMenuLabel>
-					<DropdownMenuSeparator />
-
-					<CategoryMoreAction slug={row.original.slug} />
-					<UpdateMoreAction data={row.original} />
-					<DeleteMoreAction slug={row.original.slug} />
-					<InfoMoreAction data={row.original} />
-				</DropdownMenuContent>
-			</DropdownMenu>
 		),
 	},
 ];

@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Skeleton } from "@/components/ui/skeleton";
 import { auth } from "@/core/actions/auth";
@@ -28,10 +29,12 @@ export async function HeaderUser() {
 				</span>
 			</div>
 
-			<Avatar className="size-10">
-				<AvatarImage alt={`Foto de ${user.name}`} src={""} />
-				<AvatarFallback>{initials}</AvatarFallback>
-			</Avatar>
+			<Link href="/dashboard/account">
+				<Avatar className="size-10">
+					<AvatarImage alt={`Foto de ${user.name}`} src={""} />
+					<AvatarFallback>{initials}</AvatarFallback>
+				</Avatar>
+			</Link>
 		</>
 	);
 }

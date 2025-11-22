@@ -1,3 +1,6 @@
+export const dynamic = "force-dynamic";
+
+import { Suspense } from "react";
 import { category } from "@/core/actions/category";
 import type { Category } from "@/core/schemas/category";
 import { TableListCategory } from "../_components/layout/tables/cotegory";
@@ -21,10 +24,9 @@ export default async function CategoriesDashboardPage() {
 				</p>
 			</div>
 
-			<section>
+			<Suspense fallback={<div>Carregando...</div>}>
 				<TableListCategory data={categories} />
-				{/* <pre>{JSON.stringify(categories, null, 2)}</pre> */}
-			</section>
+			</Suspense>
 		</div>
 	);
 }

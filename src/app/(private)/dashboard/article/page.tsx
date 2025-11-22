@@ -6,8 +6,8 @@ export default async function ArticleDashboardPage() {
 	const result = await article.findMany();
 	const articles: Article[] = [];
 	if (result.success) {
-		for (let i = 0; i < articles.length; i++) {
-			articles.push(articles[i]);
+		for (let i = 0; i < result.data.data.length; i++) {
+			articles.push(result.data.data[i]);
 		}
 	}
 	return (
@@ -20,6 +20,7 @@ export default async function ArticleDashboardPage() {
 					Gerencie todo o conteúdo do seu blog
 				</p>
 			</div>
+
 			<TableListArticle data={articles} />
 		</div>
 	);

@@ -1,6 +1,7 @@
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
+import Image from "next/image";
 import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
@@ -19,6 +20,7 @@ import {
 	type CreateArticleSchemaValues,
 	createArticleSchema,
 } from "@/core/schemas/article/create-article.schema";
+import { formatSlug } from "@/lib/formats/format-slug";
 import ContentField from "./fields/content-field";
 import CoverImageField from "./fields/cover-image-field";
 import ExcerptField from "./fields/excerpt-field";
@@ -27,18 +29,11 @@ import GalleryField from "./fields/gallery-field";
 import PublishSwitch from "./fields/publish-switch";
 import TitleField from "./fields/title-field";
 
-function generateSlug(value: string) {
-	return value
-		.normalize("NFD") // separa acentos
-		.replace(/[\u0300-\u036f]/g, "") // remove acentos
-		.trim()
-		.toLowerCase()
-		.replace(/[^a-z0-9\s-]/g, "") // remove chars estranhos
-		.replace(/\s+/g, "-") // espaços -> hífens
-		.replace(/-+/g, "-"); // hífens duplos
+interface ArticleFormProps {
+	onFinishSubmit?: () => void;
 }
 
-export function ArticleForm() {
+export function ArticleForm({ onFinishSubmit }: ArticleFormProps) {
 	const form = useForm<CreateArticleSchemaValues>({
 		resolver: zodResolver(createArticleSchema),
 		defaultValues: {
@@ -54,22 +49,48 @@ export function ArticleForm() {
 	});
 
 	async function onSubmit(values: CreateArticleSchemaValues) {
-		const res = await article.create(values);
+		const formData = new FormData();
+		formData.append("title", values.title);
+		formData.append("slug", values.slug);
+		if (values.excerpt) formData.append("excerpt", values.excerpt);
+		formData.append("content", values.content);
+
+		if (values.is_published)
+			formData.append(
+				"is_published",
+				values.is_published !== null ? String(values.is_published) : "",
+			);
+		if (values.is_featured)
+			formData.append(
+				"is_featured",
+				values.is_featured !== null ? String(values.is_featured) : "",
+			);
+
+		if (values.cover_image)
+			formData.append("cover_image", values.cover_image);
+
+		if (values.gallery_images?.length) {
+			values.gallery_images.forEach((file) => {
+				formData.append("gallery_images[]", file);
+			});
+		}
+		const res = await article.create(formData);
 
 		if (!res.success) {
 			toast.error(res.error);
 			return;
 		}
 
-		toast.success("✅ Artigo criado com sucesso!");
+		toast.success("Artigo criado com sucesso!");
 		form.reset();
+		onFinishSubmit();
 	}
 
 	const title = form.watch("title");
 
 	useEffect(() => {
 		if (!title) return;
-		form.setValue("slug", generateSlug(title), { shouldValidate: true });
+		form.setValue("slug", formatSlug(title), { shouldValidate: true });
 	}, [title, form]);
 
 	return (
@@ -115,8 +136,81 @@ export function ArticleForm() {
 					</Button>
 				</div>
 				<div className="w-full flex flex-col gap-4">
-					<CoverImageField form={form} />
-					<GalleryField form={form} />
+					{/* <CoverImageField form={form} />
+					<GalleryField form={form} /> */}
+					<FormField
+						control={form.control}
+						name="cover_image"
+						render={({ field }) => (
+							<FormItem>
+								<FormLabel>Imagem de capa</FormLabel>
+
+								<FormControl>
+									<Input
+										type="file"
+										accept="image/*"
+										onChange={(e) => {
+											const file = e.target.files?.[0];
+											field.onChange(file || null);
+										}}
+									/>
+								</FormControl>
+
+								<FormMessage />
+							</FormItem>
+						)}
+					/>
+
+					<FormField
+						control={form.control}
+						name="gallery_images"
+						render={({ field }) => (
+							<FormItem>
+								<FormLabel>Galeria de Imagens</FormLabel>
+
+								<FormControl>
+									<Input
+										type="file"
+										accept="image/*"
+										multiple
+										onChange={(e) => {
+											const files = e.target.files
+												? Array.from(e.target.files)
+												: [];
+											field.onChange(files);
+										}}
+									/>
+								</FormControl>
+								<FormMessage />
+
+								<div>
+									{Array.isArray(field.value) &&
+										field.value.length > 0 && (
+											<div className="grid grid-cols-2 gap-4 md:grid-cols-3">
+												{field.value.map((file) => (
+													<div
+														key={file.name}
+														className="relative aspect-square rounded-md bg-accent"
+													>
+														<Image
+															src={
+																URL.createObjectURL(
+																	file,
+																) ??
+																"/images/placeholder.svg"
+															}
+															alt={file.name}
+															fill
+															className="size-full rounded-[inherit] object-cover"
+														/>
+													</div>
+												))}
+											</div>
+										)}
+								</div>
+							</FormItem>
+						)}
+					/>
 				</div>
 			</form>
 		</Form>

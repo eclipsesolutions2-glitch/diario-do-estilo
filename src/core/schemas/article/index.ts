@@ -1,5 +1,30 @@
 export interface Article {
 	id: number;
+	slug: string;
+	title: string;
+	excerpt: string;
+	content: string;
+	author: Author;
+	published_by?: string;
+	is_published: boolean;
+	is_featured: boolean;
+	published_at?: string;
+	view_count: number;
+	cover_image?: string;
+}
+
+export interface Author {
+	id: number;
+	name: string;
+}
+
+export interface Meta {
+	total: number;
+	per_page: number;
+}
+/* 
+export interface Article {
+	id: number;
 	title: string;
 	slug: string;
 	excerpt: string;
@@ -43,3 +68,4 @@ export interface MetaArticle {
 	per_page: number;
 	total: number;
 }
+ */

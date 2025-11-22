@@ -33,7 +33,7 @@ export function InfoMoreAction({ data }: InfoMoreActionProps) {
 					</DialogDescription>
 				</DialogHeader>
 
-				<div className="grid gap-4 text-sm">
+				<div className="grid grid-cols-2 gap-4 text-sm">
 					{/* ID */}
 					<Field label="ID" value={data.id} />
 
@@ -61,13 +61,13 @@ export function InfoMoreAction({ data }: InfoMoreActionProps) {
 					{/* Autor */}
 					<Field
 						label="Autor"
-						value={`${data.author.name} (${data.author.email})`}
+						value={`${data.author.name} ({data.author.email})`}
 					/>
 
 					{/* Editor */}
 					<Field
 						label="Editor"
-						value={`${data.publisher.name} (${data.publisher.email})`}
+						value={`{data.publisher.name} ({data.publisher.email})`}
 					/>
 
 					{/* Status */}
@@ -85,32 +85,33 @@ export function InfoMoreAction({ data }: InfoMoreActionProps) {
 					{/* Datas */}
 					<Field
 						label="Criado em"
-						value={new Date(data.created_at).toLocaleString(
-							"pt-PT",
-						)}
+						// data.created_at
+						value={new Date().toLocaleString("pt-PT")}
 					/>
 					<Field
 						label="Atualizado em"
-						value={new Date(data.updated_at).toLocaleString(
-							"pt-PT",
-						)}
+						// data.updated_at
+						value={new Date().toLocaleString("pt-PT")}
 					/>
 
 					{/* Capa */}
-					<div className="flex flex-col gap-2">
+					<div className="flex flex-col gap-2 col-span-2">
 						<span className="font-medium text-neutral-700">
 							Imagem de Capa
 						</span>
-						<Image
-							src={data.coverImage.path}
-							alt="cover"
-							fill
-							className="h-32 w-full rounded-md object-cover border"
-						/>
+						<div className="relative h-32 overflow-hidden w-full rounded-md border">
+							<Image
+								//data.coverImage.path ??
+								src={"/images/placeholder.svg"}
+								alt="cover"
+								fill
+								className="object-cover "
+							/>
+						</div>
 					</div>
 
 					{/* Galeria */}
-					{data.images.length > 0 && (
+					{/* {data.images.length > 0 && (
 						<div className="flex flex-col gap-2">
 							<span className="font-medium text-neutral-700">
 								Galeria
@@ -127,7 +128,7 @@ export function InfoMoreAction({ data }: InfoMoreActionProps) {
 								))}
 							</div>
 						</div>
-					)}
+					)} */}
 				</div>
 			</DialogContent>
 		</Dialog>

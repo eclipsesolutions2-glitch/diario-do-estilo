@@ -7,8 +7,16 @@ import {
 } from "@/core/schemas/default.mappers";
 import { env } from "@/lib/env";
 
+interface ArticlesResponse {
+	data: Article[];
+	meta: {
+		total: number;
+		per_page: number;
+	};
+}
+
 export async function findManyArticlesAction(): Promise<
-	ApiResponse<Article[]>
+	ApiResponse<ArticlesResponse>
 > {
 	try {
 		const storage = await cookies();
@@ -20,14 +28,14 @@ export async function findManyArticlesAction(): Promise<
 
 		const { NEXT_PUBLIC_API_URL: API_URL } = env;
 
-		const response = await fetch(`${API_URL}/api/v1/articles`, {
+		const response = await fetch(`${API_URL}/api/v1/admin/articles`, {
 			method: "GET",
 			headers: {
 				Authorization: `Bearer ${token.value}`,
 				"Content-Type": "application/json",
 			},
 			next: {
-				tags: ["get-article"],
+				tags: ["article-list"],
 			},
 		});
 
@@ -38,14 +46,7 @@ export async function findManyArticlesAction(): Promise<
 			return ResponseMapper.error(msg);
 		}
 
-		const articles = Array.isArray(data.data)
-			? data.data
-			: (data.data ?? []);
-
-		return ResponseMapper.success(
-			articles,
-			"Artigos carregados com sucesso.",
-		);
+		return ResponseMapper.success(data, "Artigos carregados com sucesso.");
 	} catch (error) {
 		console.error("❌ Erro inesperado ao carregar articles:", error);
 		return ResponseMapper.error("Erro inesperado ao carregar articles.");

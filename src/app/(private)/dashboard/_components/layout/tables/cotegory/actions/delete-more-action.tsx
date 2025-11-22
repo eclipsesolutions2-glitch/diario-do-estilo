@@ -41,11 +41,12 @@ export function DeleteMoreAction({ slug }: DeleteMoreActionProps) {
 			<AlertDialogContent>
 				<AlertDialogHeader>
 					<AlertDialogTitle>
-						Tem certeza que deseja eliminar esta aula?
+						Tem certeza que deseja eliminar esta categoria?
 					</AlertDialogTitle>
+
 					<AlertDialogDescription>
-						Esta ação não pode ser desfeita. A aula será removida
-						permanentemente do curso e todos os dados associados
+						Esta ação não pode ser desfeita. A categoria será
+						removida permanentemente e todos os dados associados
 						serão eliminados.
 					</AlertDialogDescription>
 				</AlertDialogHeader>

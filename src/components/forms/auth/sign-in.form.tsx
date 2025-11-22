@@ -47,7 +47,9 @@ export function SignInForm() {
 
 		form.reset();
 		toast.success(result.message);
-		router.replace("/");
+		const redirectRoute =
+			result.data.user.role === "admin" ? "/dashboard" : "/";
+		router.replace(redirectRoute);
 	};
 
 	return (

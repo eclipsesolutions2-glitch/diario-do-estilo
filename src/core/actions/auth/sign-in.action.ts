@@ -13,6 +13,16 @@ import { env } from "@/lib/env";
 
 interface SignInResponse {
 	message: string;
+	user: {
+		id: number;
+		name: string;
+		username: string;
+		email: string;
+		role: "admin";
+		bio: string;
+		avatar_url?: string;
+		can_upload_avatar: boolean;
+	};
 	token: string;
 }
 

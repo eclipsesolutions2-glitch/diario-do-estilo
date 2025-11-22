@@ -37,6 +37,7 @@ interface TableListArticleProps {
 }
 
 export function TableListArticle({ data }: TableListArticleProps) {
+	const [openDialog, setOpenDialog] = useState(false);
 	const [pageQuery, setPageQuery] = useQueryState(
 		"page",
 		parseAsInteger.withDefault(1),
@@ -81,7 +82,7 @@ export function TableListArticle({ data }: TableListArticleProps) {
 					/>
 				</div>
 
-				<Dialog>
+				<Dialog open={openDialog} onOpenChange={setOpenDialog}>
 					<DialogTrigger asChild>
 						<Button className="text-white">
 							<FilePlus2 />
@@ -98,7 +99,9 @@ export function TableListArticle({ data }: TableListArticleProps) {
 								nova artigo ao sistema.
 							</DialogDescription>
 						</DialogHeader>
-						<ArticleForm />
+						<ArticleForm
+							onFinishSubmit={() => setOpenDialog(false)}
+						/>
 					</DialogContent>
 				</Dialog>
 			</div>

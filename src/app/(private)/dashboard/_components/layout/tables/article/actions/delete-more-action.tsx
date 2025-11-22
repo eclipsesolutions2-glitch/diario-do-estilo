@@ -13,6 +13,7 @@ import {
 	AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
 import { DropdownMenuItem } from "@/components/ui/dropdown-menu";
+import { article } from "@/core/actions/article";
 import { category } from "@/core/actions/category";
 
 interface DeleteMoreActionProps {
@@ -21,7 +22,7 @@ interface DeleteMoreActionProps {
 
 export function DeleteMoreAction({ slug }: DeleteMoreActionProps) {
 	const handleDelete = async () => {
-		const result = await category.delete(slug);
+		const result = await article.delete(slug);
 
 		if (!result.success) {
 			toast.error(result.error);
@@ -41,12 +42,13 @@ export function DeleteMoreAction({ slug }: DeleteMoreActionProps) {
 			<AlertDialogContent>
 				<AlertDialogHeader>
 					<AlertDialogTitle>
-						Tem certeza que deseja eliminar esta aula?
+						Tem certeza que deseja eliminar este artigo?
 					</AlertDialogTitle>
+
 					<AlertDialogDescription>
-						Esta ação não pode ser desfeita. A aula será removida
-						permanentemente do curso e todos os dados associados
-						serão eliminados.
+						Esta ação não pode ser desfeita. O artigo será removido
+						permanentemente e todos os dados associados serão
+						eliminados.
 					</AlertDialogDescription>
 				</AlertDialogHeader>
 
