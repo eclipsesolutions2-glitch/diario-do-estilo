@@ -10,8 +10,8 @@ export const createArticleSchema = z.object({
 	excerpt: z.string().max(500).optional(),
 	content: z.string().min(10),
 
-	is_published: z.boolean().default(false),
-	is_featured: z.boolean().default(false),
+	is_published: z.boolean(),
+	is_featured: z.boolean(),
 
 	cover_image: z.instanceof(File).optional().nullable(),
 

@@ -35,16 +35,18 @@ interface ArticleFormProps {
 
 export function ArticleForm({ onFinishSubmit }: ArticleFormProps) {
 	const form = useForm<CreateArticleSchemaValues>({
+		mode: "all",
 		resolver: zodResolver(createArticleSchema),
+		criteriaMode: "firstError",
 		defaultValues: {
 			title: "",
-			slug: "",
-			excerpt: "",
 			content: "",
-			is_published: false,
+			excerpt: "",
+			slug: "",
 			is_featured: false,
+			is_published: false,
+			gallery_images: null,
 			cover_image: null,
-			gallery_images: [],
 		},
 	});
 
@@ -83,7 +85,7 @@ export function ArticleForm({ onFinishSubmit }: ArticleFormProps) {
 
 		toast.success("Artigo criado com sucesso!");
 		form.reset();
-		onFinishSubmit();
+		onFinishSubmit ? onFinishSubmit() : null;
 	}
 
 	const title = form.watch("title");
