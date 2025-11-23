@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import {
 	CardAction,
 	CardContent,
@@ -16,8 +18,6 @@ import {
 } from "../_components/overview/overview-card";
 import { ChartPieLegend } from "../_components/overview/overview-chart/piechart-legend";
 import { OVERVIEW_CARD_ITEMS } from "./data";
-
-export const dynamic = "force-dynamic";
 
 export default async function OverviewDashboard() {
 	const result = await article.findMany();
