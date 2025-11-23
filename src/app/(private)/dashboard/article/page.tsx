@@ -1,5 +1,3 @@
-
-
 import { article } from "@/core/actions/article";
 import type { Article } from "@/core/schemas/article";
 import { TableListArticle } from "../_components/layout/tables/article";

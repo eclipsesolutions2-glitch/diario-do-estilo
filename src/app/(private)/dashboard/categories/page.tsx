@@ -1,5 +1,3 @@
-
-
 import { Suspense } from "react";
 import { category } from "@/core/actions/category";
 import type { Category } from "@/core/schemas/category";
@@ -31,5 +29,3 @@ export default async function CategoriesDashboardPage() {
 		</div>
 	);
 }
-
-
