@@ -1,4 +1,4 @@
-export const dynamic = "force-dynamic";
+
 
 import { Suspense } from "react";
 import { category } from "@/core/actions/category";
@@ -13,6 +13,7 @@ export default async function CategoriesDashboardPage() {
 			categories.push(result.data[i]);
 		}
 	}
+
 	return (
 		<div>
 			<div className="mb-8">
@@ -30,3 +31,5 @@ export default async function CategoriesDashboardPage() {
 		</div>
 	);
 }
+
+

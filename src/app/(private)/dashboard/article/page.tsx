@@ -1,4 +1,4 @@
-export const dynamic = "force-dynamic";
+
 
 import { article } from "@/core/actions/article";
 import type { Article } from "@/core/schemas/article";
