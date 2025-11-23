@@ -6,10 +6,14 @@ import {
 	ResponseMapper,
 } from "@/core/schemas/default.mappers";
 import { env } from "@/lib/env";
+import { cacheLife, cacheTag } from "next/cache";
 
 export async function findManyCategoryAction(): Promise<
 	ApiResponse<Category[]>
 > {
+	"use cache: private";
+	cacheLife("seconds");
+	cacheTag("categories-list");
 	try {
 		const storage = await cookies();
 		const token = storage.get("dds-auth.session-token")?.value;
@@ -27,9 +31,6 @@ export async function findManyCategoryAction(): Promise<
 			headers: {
 				Authorization: `Bearer ${token}`,
 				"Content-Type": "application/json",
-			},
-			next: {
-				tags: ["categories-list"],
 			},
 		});
 

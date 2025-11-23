@@ -1,6 +1,6 @@
 "use server";
 
-import { revalidateTag } from "next/cache";
+import { revalidateTag, updateTag } from "next/cache";
 import { cookies } from "next/headers";
 import { createArticleSchema } from "@/core/schemas/article/create-article.schema";
 import {
@@ -81,7 +81,7 @@ export async function CreateArticleAction(
 			throw new Error(err || "Falha ao criar artigo");
 		}
 
-		revalidateTag("get-article", "max");
+		updateTag("get-article");
 
 		return ResponseMapper.success(true);
 	} catch (error) {

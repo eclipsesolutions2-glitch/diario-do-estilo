@@ -7,8 +7,13 @@ import {
 } from "@/core/schemas/default.mappers";
 import type { UserProfile } from "@/core/schemas/user";
 import { env } from "@/lib/env";
+import { cacheLife, cacheTag } from "next/cache";
 
 export async function findDetailsAction(): Promise<ApiResponse<UserProfile>> {
+	"use cache: private";
+	cacheLife("seconds");
+	cacheTag("profile-details");
+
 	try {
 		const storage = await cookies();
 		const token = storage.get("dds-auth.session-token")?.value;
@@ -29,9 +34,6 @@ export async function findDetailsAction(): Promise<ApiResponse<UserProfile>> {
 				headers: {
 					Authorization: `Bearer ${token}`,
 					"Content-Type": "application/json",
-				},
-				next: {
-					tags: ["profile-details"],
 				},
 			},
 		);

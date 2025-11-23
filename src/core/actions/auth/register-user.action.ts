@@ -10,6 +10,7 @@ import {
 	ResponseMapper,
 } from "@/core/schemas/default.mappers";
 import { env } from "@/lib/env";
+import { updateTag } from "next/cache";
 
 interface RegisterUserResponse {
 	message: string;
@@ -63,6 +64,8 @@ export async function registerUserAction(
 			maxAge: 60 * 60 * 24 * 1, // 1 dia
 			path: "/",
 		});
+
+		updateTag("user-session");
 
 		return ResponseMapper.success(data);
 	} catch (error) {

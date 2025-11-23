@@ -6,6 +6,7 @@ import {
 	ResponseMapper,
 } from "@/core/schemas/default.mappers";
 import { env } from "@/lib/env";
+import { updateTag } from "next/cache";
 
 export async function markAllReadNotificationAction(): Promise<
 	ApiResponse<Notification[]>
@@ -26,9 +27,6 @@ export async function markAllReadNotificationAction(): Promise<
 				Authorization: `Bearer ${token.value}`,
 				"Content-Type": "application/json",
 			},
-			next: {
-				tags: ["get-notification"],
-			},
 		});
 
 		const data = await response.json().catch(() => null);
@@ -37,6 +35,8 @@ export async function markAllReadNotificationAction(): Promise<
 			const msg = data?.message ?? "Falha ao carregar noticações.";
 			return ResponseMapper.error(msg);
 		}
+
+		updateTag("get-notification");
 
 		return ResponseMapper.success(
 			data.data,

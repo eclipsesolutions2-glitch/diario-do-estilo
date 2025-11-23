@@ -1,7 +1,6 @@
 "use client";
-
-import { parseCookies } from "nookies";
 import { useEffect, useState } from "react";
+import { notification } from "..";
 
 export interface Notification {
 	id: string;
@@ -23,6 +22,38 @@ export interface NotificationResponse {
 	per_page: number;
 	total: number;
 }
+
+export function useFindManyNotifications() {
+	const [notifications, setNotifications] = useState<Notification[]>([]);
+	const [panding, setPending] = useState(true);
+
+	useEffect(() => {
+		const controller = new AbortController();
+		notification
+			.findMany()
+			.then((result) => {
+				if (result.success) {
+					setNotifications(result.data);
+				}
+			})
+			.finally(() => {
+				setPending(false);
+			});
+
+		return () => controller.abort();
+	}, []);
+
+	return { data: notifications, panding };
+}
+
+/* 
+"use client";
+
+import { parseCookies } from "nookies";
+import { useEffect, useState } from "react";
+import { notification } from "..";
+
+
 
 export function useNotification() {
 	const [notifications, setNotifications] = useState<Notification[] | null>(
@@ -98,3 +129,4 @@ export function useNotification() {
 		error,
 	};
 }
+ */

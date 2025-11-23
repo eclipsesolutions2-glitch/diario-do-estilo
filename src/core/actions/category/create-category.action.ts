@@ -1,6 +1,6 @@
 "use server";
 
-import { revalidateTag } from "next/cache";
+import { updateTag } from "next/cache";
 import { cookies } from "next/headers";
 import {
 	type CreateCategorySchemaValues,
@@ -24,7 +24,6 @@ export async function createCategoryAction(
 				"Sessão expirada. Faça login novamente.",
 			);
 		}
-		console.log({ token });
 
 		const parsed = createCategorySchema.safeParse(data);
 
@@ -46,7 +45,6 @@ export async function createCategoryAction(
 				Authorization: `Bearer ${token}`,
 			},
 			body: JSON.stringify(parsed.data),
-			cache: "no-store",
 		});
 
 		console.log({ response });
@@ -58,7 +56,7 @@ export async function createCategoryAction(
 			return ResponseMapper.error(apiMsg);
 		}
 
-		revalidateTag("categories-list", "max");
+		updateTag("categories-list");
 
 		return ResponseMapper.success(true, "Categoria criada com sucesso");
 	} catch (error) {

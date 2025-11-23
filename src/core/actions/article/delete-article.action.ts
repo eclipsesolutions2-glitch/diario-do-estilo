@@ -1,6 +1,6 @@
 "use server";
 
-import { revalidateTag } from "next/cache";
+import { updateTag } from "next/cache";
 import { cookies } from "next/headers";
 import {
 	type ApiResponse,
@@ -32,7 +32,7 @@ export async function deleteArticleAction(
 			throw new Error(errorData?.message || "Falha ao excluir artigo");
 		}
 
-		revalidateTag("article-list", "max");
+		updateTag("article-list");
 
 		return ResponseMapper.success(true, "Artigo excluída com sucesso");
 	} catch (error) {

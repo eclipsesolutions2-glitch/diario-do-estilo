@@ -7,8 +7,12 @@ import {
 } from "@/core/schemas/default.mappers";
 import type { User } from "@/core/schemas/user";
 import { env } from "@/lib/env";
+import { cacheLife, cacheTag } from "next/cache";
 
 export async function getSession(): Promise<ApiResponse<User>> {
+	"use cache: private";
+	cacheLife("seconds");
+	cacheTag("user-session");
 	const storage = await cookies();
 	const token = storage.get("dds-auth.session-token");
 
@@ -24,9 +28,6 @@ export async function getSession(): Promise<ApiResponse<User>> {
 			headers: {
 				Authorization: `Bearer ${token.value}`,
 				Accept: "aplication/json",
-			},
-			next: {
-				tags: ["user-session"],
 			},
 		});
 

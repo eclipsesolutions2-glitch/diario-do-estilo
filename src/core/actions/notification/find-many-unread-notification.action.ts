@@ -26,9 +26,6 @@ export async function findManyUnReadNotificationAction(): Promise<
 				Authorization: `Bearer ${token.value}`,
 				"Content-Type": "application/json",
 			},
-			next: {
-				tags: ["get-notification"],
-			},
 		});
 
 		const data = await response.json().catch(() => null);

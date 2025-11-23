@@ -1,6 +1,6 @@
 "use server";
 
-import { revalidateTag } from "next/cache";
+import { updateTag } from "next/cache";
 import { cookies } from "next/headers";
 import {
 	type ApiResponse,
@@ -33,7 +33,7 @@ export async function signOutAction(): Promise<ApiResponse<boolean>> {
 		}
 
 		storage.delete("dds-auth.session-token");
-		revalidateTag("user-session", "max");
+		updateTag("user-session");
 		return ResponseMapper.success(true);
 	} catch (error) {
 		console.error("❌ Erro inesperado no logout: ", error);

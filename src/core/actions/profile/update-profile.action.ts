@@ -1,6 +1,6 @@
 "use server";
 
-import { revalidateTag } from "next/cache";
+import { updateTag } from "next/cache";
 import { cookies } from "next/headers";
 import {
 	type ApiResponse,
@@ -56,7 +56,7 @@ export async function updateProfileAction(
 			);
 		}
 
-		revalidateTag("profile-details", "max");
+		updateTag("profile-details");
 
 		return ResponseMapper.success(
 			true,

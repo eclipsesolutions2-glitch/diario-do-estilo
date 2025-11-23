@@ -1,6 +1,6 @@
 "use server";
 
-import { revalidateTag } from "next/cache";
+import { updateTag } from "next/cache";
 import { cookies } from "next/headers";
 import {
 	type ApiResponse,
@@ -32,7 +32,7 @@ export async function deleteCategoryAction(
 			throw new Error(errorData?.message || "Falha ao excluir categoria");
 		}
 
-		revalidateTag("categories-list", "max");
+		updateTag("categories-list");
 
 		return ResponseMapper.success(true, "Categoria excluída com sucesso");
 	} catch (error) {

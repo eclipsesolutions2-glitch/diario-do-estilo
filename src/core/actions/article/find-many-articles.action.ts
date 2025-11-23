@@ -6,6 +6,7 @@ import {
 	ResponseMapper,
 } from "@/core/schemas/default.mappers";
 import { env } from "@/lib/env";
+import { cacheLife, cacheTag } from "next/cache";
 
 interface ArticlesResponse {
 	data: Article[];
@@ -18,6 +19,9 @@ interface ArticlesResponse {
 export async function findManyArticlesAction(): Promise<
 	ApiResponse<ArticlesResponse>
 > {
+	"use cache: private";
+	cacheLife("seconds");
+	cacheTag("article-list");
 	try {
 		const storage = await cookies();
 		const token = storage.get("dds-auth.session-token");
@@ -33,9 +37,6 @@ export async function findManyArticlesAction(): Promise<
 			headers: {
 				Authorization: `Bearer ${token.value}`,
 				"Content-Type": "application/json",
-			},
-			next: {
-				tags: ["article-list"],
 			},
 		});
 

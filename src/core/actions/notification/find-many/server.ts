@@ -7,10 +7,15 @@ import {
 } from "@/core/schemas/default.mappers";
 import type { Notification } from "@/core/schemas/notificaiton.chema";
 import { env } from "@/lib/env";
+import { cacheLife, cacheTag } from "next/cache";
 
 export async function findManyNotificationAction(): Promise<
 	ApiResponse<Notification[]>
 > {
+	"use cache: private";
+	cacheLife("seconds");
+	cacheTag("get-notification");
+
 	try {
 		const storage = await cookies();
 		const token = storage.get("dds-auth.session-token");
@@ -26,9 +31,6 @@ export async function findManyNotificationAction(): Promise<
 			headers: {
 				Authorization: `Bearer ${token.value}`,
 				"Content-Type": "application/json",
-			},
-			next: {
-				tags: ["get-notification"],
 			},
 		});
 

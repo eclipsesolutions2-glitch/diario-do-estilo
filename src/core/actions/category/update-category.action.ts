@@ -1,6 +1,6 @@
 "use server";
 
-import { revalidateTag } from "next/cache";
+import { updateTag } from "next/cache";
 import { cookies } from "next/headers";
 import {
 	type UpdateCategorySchemaValues,
@@ -50,8 +50,8 @@ export async function updateCategoryAction(
 			);
 		}
 
-		revalidateTag("categories-list", "max");
-		revalidateTag(`category-${slug}`, "max");
+		updateTag("categories-list");
+		updateTag(`category-${slug}`);
 
 		return ResponseMapper.success(true, "Categoria atualizada com sucesso");
 	} catch (error) {
