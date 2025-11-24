@@ -7,12 +7,11 @@ import {
 } from "@/core/schemas/default.mappers";
 import type { UserProfile } from "@/core/schemas/user";
 import { env } from "@/lib/env";
-import { cacheLife, cacheTag } from "next/cache";
 
 export async function findDetailsAction(): Promise<ApiResponse<UserProfile>> {
-	"use cache: private";
+	/* "use cache: private";
 	cacheLife("seconds");
-	cacheTag("profile-details");
+	cacheTag("profile-details"); */
 
 	try {
 		const storage = await cookies();

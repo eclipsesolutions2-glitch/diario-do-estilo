@@ -1,4 +1,3 @@
-"use cache";
 import {
 	Card,
 	CardContent,
@@ -6,14 +5,16 @@ import {
 	CardHeader,
 	CardTitle,
 } from "@/components/ui/card";
+import type { UserProfile } from "@/core/schemas/user";
 import { AvatarUploader } from "./avatar-uploader";
 import { ProfileInfoForm } from "./profile-info.from";
-import { profile } from "@/core/actions/profile";
-import { Skeleton } from "@/components/ui/skeleton";
 
-export default async function ProfileInfoCard() {
-	const result = await profile.findDetails();
 
+export default async function ProfileInfoCard({
+	data: session,
+}: {
+	data: UserProfile;
+}) {
 	return (
 		<Card>
 			<CardHeader>
@@ -24,7 +25,7 @@ export default async function ProfileInfoCard() {
 			</CardHeader>
 
 			<CardContent className="space-y-6">
-				{!result.success ? (
+				{/* {!result.success ? (
 					<>
 						<div>
 							<Skeleton className="size-10 rounded-full" />
@@ -47,22 +48,22 @@ export default async function ProfileInfoCard() {
 					</>
 				) : (
 					<>
-						<AvatarUploader
-							data={{
-								name: result.data.name,
-								image: result.data.avatar_url,
-							}}
-						/>
-						<ProfileInfoForm
-							defaultValues={{
-								name: result.data.name,
-								email: result.data.email,
-								username: result.data.username,
-								bio: result.data.bio,
-							}}
-						/>
 					</>
-				)}
+				)} */}
+				<AvatarUploader
+					data={{
+						name: session.name,
+						image: session.avatar_url,
+					}}
+				/>
+				<ProfileInfoForm
+					defaultValues={{
+						name: session.name,
+						email: session.email,
+						username: session.username,
+						bio: session.bio,
+					}}
+				/>
 			</CardContent>
 		</Card>
 	);
