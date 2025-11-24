@@ -6,14 +6,18 @@ import { Suspense } from "react";
 
 export default async function AccountDashboard() {
 	const result = await profile.findDetails();
-	
+
 	return (
 		<main className="flex-1 p-6">
 			<div className="max-w-4xl mx-auto">
 				<ProfileHeader />
 				<div className="grid gap-6">
 					<Suspense fallback={"carregando..."}>
-						{result.success ? <ProfileInfoCard data={result.data} /> : "..."}
+						{result.success ? (
+							<ProfileInfoCard data={result.data} />
+						) : (
+							"..."
+						)}
 					</Suspense>
 					<AccountActionsCard />
 				</div>

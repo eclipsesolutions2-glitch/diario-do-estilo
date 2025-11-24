@@ -9,7 +9,6 @@ import type { UserProfile } from "@/core/schemas/user";
 import { AvatarUploader } from "./avatar-uploader";
 import { ProfileInfoForm } from "./profile-info.from";
 
-
 export default async function ProfileInfoCard({
 	data: session,
 }: {
