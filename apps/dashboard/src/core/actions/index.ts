@@ -1,3 +1,7 @@
+import { findManyNotificationAction } from "./notifications/find-many-notification.action";
+import { findManyUnReadNotificationAction } from "./notifications/find-many-unread-notification.action";
+import { markAllReadNotificationAction } from "./notifications/mark-all-read-notification.action";
+import { markOneReadNotificationAction } from "./notifications/mark-one-read-notification.action";
 import { getUserProfileAction } from "./profile/get-user-profile.action";
 import { updateProfileAction } from "./profile/update-profile.action";
 import { findManyUserAction } from "./users/find-many-user.action";
@@ -17,5 +21,11 @@ export const action = {
                 update: updateProfileAction
             }
         },
+        notification: {
+            findMany: findManyNotificationAction,
+            findManyUnRead: findManyUnReadNotificationAction,
+            markAllRead: markAllReadNotificationAction,
+            markOneRead: markOneReadNotificationAction
+        }
     },
 };
