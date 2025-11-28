@@ -9,7 +9,7 @@ interface GetUserProfileActionResponse {
 
 export async function getUserProfileAction(): Promise<ApiResponse<UserProfile>> {
     const storage = await cookies();
-    const token = storage.get("cookie-name");
+    const token = storage.get("dds-auth.session-token");
 
     if (!token) {
         return ApiResponseBuilder.error("Precisa estar autenticado.");

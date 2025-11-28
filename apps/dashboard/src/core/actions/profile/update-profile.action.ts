@@ -10,7 +10,7 @@ interface UpdateProfileActionResponse {
 
 export async function updateProfileAction(data: UpdateProfileSchemaValues): Promise<ApiResponse<UserProfile>> {
     const storage = await cookies();
-    const token = storage.get("cookie-name");
+    const token = storage.get("dds-auth.session-token");
     if (!token) {
         return ApiResponseBuilder.error("Precisa estar autenticado.");
     }

@@ -8,7 +8,7 @@ interface RestoreUserActionParams {
 
 export async function restoreUserAction({ userId }: RestoreUserActionParams) {
     const storage = await cookies();
-    const token = storage.get("cookie-name");
+    const token = storage.get("dds-auth.session-token");
     if (!token) {
         return "Precisa estar autenticado.";
     }

@@ -8,7 +8,7 @@ interface InactiveUserActionParams {
 
 export async function inactiveUserAction({ userId }: InactiveUserActionParams) {
     const storage = await cookies();
-    const token = storage.get("cookie-name");
+    const token = storage.get("dds-auth.session-token");
     if (!token) {
         return "Precisa estar autenticado.";
     }
