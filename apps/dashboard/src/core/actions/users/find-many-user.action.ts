@@ -1,5 +1,7 @@
 "use server";
+import { User } from "@/core/schemas/user";
 import { env } from "@/lib/env";
+import { ApiResponse, ApiResponseBuilder } from "@workspace/ui/lib/mappers/api-response-builder.mapper";
 import { cookies } from "next/headers";
 
 interface FindManyUserActionParams {
@@ -7,11 +9,26 @@ interface FindManyUserActionParams {
     status: "all" | "active" | "trashed"
 }
 
-export async function findManyUserAction({ search, status = "all" }: FindManyUserActionParams) {
+interface FindManyUserActionResponse {
+    search: string
+    status: string
+    total: number
+    grouped: {
+        admin: UserBase
+        editor: UserBase
+        reader: UserBase
+    }
+}
+interface UserBase {
+    total: number
+    users: User[]
+}
+
+export async function findManyUserAction({ search, status = "all" }: FindManyUserActionParams): Promise<ApiResponse<FindManyUserActionResponse>> {
     const storage = await cookies();
     const token = storage.get("dds-auth.session-token");
     if (!token) {
-        return "Precisa estar autenticado.";
+        return ApiResponseBuilder.error("Precisa estar autenticado.");
     }
     try {
         const { NEXT_PUBLIC_API_URL } = env;
@@ -26,16 +43,17 @@ export async function findManyUserAction({ search, status = "all" }: FindManyUse
                 status
             })
         });
+        const json = await response.json().catch(() => null) as FindManyUserActionResponse;
         if (!response.ok) {
-            return "Algo correu mal ao tentar buscar os dados";
+            const msg = "Algo correu mal ao tentar buscar os dados";
+            return ApiResponseBuilder.error(msg);
         }
 
-        const json = await response.json().catch(() => null);
-        // Mapper dos dados
-        return json;
+
+        return ApiResponseBuilder.success(json);
     } catch (error) {
         const errorMessage = "Falha ao buscar os dados. ";
-        console.error(errorMessage, error);
-        throw new Error(errorMessage);
+        console.error(`❌ ERROR: ${errorMessage}`, error);
+        return ApiResponseBuilder.error(errorMessage);
     }
 }

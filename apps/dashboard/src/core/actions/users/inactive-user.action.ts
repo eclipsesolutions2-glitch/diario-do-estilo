@@ -1,20 +1,23 @@
 "use server";
 import { env } from "@/lib/env";
+import { ApiResponse, ApiResponseBuilder } from "@workspace/ui/lib/mappers/api-response-builder.mapper";
 import { cookies } from "next/headers";
 
 interface InactiveUserActionParams {
     userId: string;
 }
 
-export async function inactiveUserAction({ userId }: InactiveUserActionParams) {
+interface InactiveUserActionResponse { message: string }
+
+export async function inactiveUserAction({ userId }: InactiveUserActionParams): Promise<ApiResponse<InactiveUserActionResponse>> {
     const storage = await cookies();
     const token = storage.get("dds-auth.session-token");
     if (!token) {
-        return "Precisa estar autenticado.";
+        return ApiResponseBuilder.error("Precisa estar autenticado.");
     }
 
     if (!userId) {
-        return "Identificador do usuário não enviado";
+        return ApiResponseBuilder.error("Identificador do usuário não enviado");
     }
 
     try {
@@ -26,15 +29,16 @@ export async function inactiveUserAction({ userId }: InactiveUserActionParams) {
             }
         });
 
+        const json = await response.json().catch(() => null) as InactiveUserActionResponse;
         if (!response.ok) {
-            return "Algo correu mal ao tentar desativar a conta de" + userId;
+            const msg = json.message ?? "Algo correu mal ao tentar desativar a conta de" + userId;
+            return ApiResponseBuilder.error(msg);
         }
 
-        const json = response.json().catch(() => null);
-        return json;
+        return ApiResponseBuilder.success(json);
     } catch (error) {
         const errorMessage = "Falha ao  desativar a conta. ";
-        console.error(errorMessage, error);
-        throw new Error(errorMessage);
+        console.error(`❌ ERROR: ${errorMessage}`, error);
+        return ApiResponseBuilder.error(errorMessage);
     }
 }
