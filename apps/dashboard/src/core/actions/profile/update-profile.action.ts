@@ -1,3 +1,4 @@
+"use server";
 import { UserProfile } from "@/core/schemas/user";
 import { updateProfileSchema, UpdateProfileSchemaValues } from "@/core/schemas/user/profile.schema";
 import { env } from "@/lib/env";

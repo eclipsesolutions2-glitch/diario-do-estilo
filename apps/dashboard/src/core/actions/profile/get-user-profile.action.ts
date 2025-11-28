@@ -1,3 +1,4 @@
+"use server";
 import { UserProfile } from "@/core/schemas/user";
 import { env } from "@/lib/env";
 import { ApiResponse, ApiResponseBuilder } from "@workspace/ui/lib/mappers/api-response-builder.mapper";
