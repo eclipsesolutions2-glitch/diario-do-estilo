@@ -1,7 +1,8 @@
+"use server";
 import { Notification } from "@/core/schemas/notification";
 import { ApiResponse, ApiResponseBuilder } from "@workspace/ui/lib/mappers/api-response-builder.mapper";
 import { cookies } from "next/headers";
-import { env } from "process";
+import { env } from "@/lib/env";
 
 interface FindManyNotificationParams {
     page?: number;
