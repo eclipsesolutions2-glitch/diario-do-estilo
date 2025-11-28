@@ -8,15 +8,3 @@ export const updateProfileSchema = z.object({
 });
 
 export type UpdateProfileSchemaValues = z.infer<typeof updateProfileSchema>;
-
-export interface UserProfile {
-    id: number,
-    name: string,
-    username: string,
-    email: string,
-    bio: string,
-    avatar_url?: string,
-    role: "editor" | "admin",
-    created_at: string,
-    updated_at?: string
-}

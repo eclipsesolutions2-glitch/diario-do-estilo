@@ -1,4 +1,5 @@
-import { updateProfileSchema, UpdateProfileSchemaValues, UserProfile } from "@/core/schemas/user/profile.schema";
+import { UserProfile } from "@/core/schemas/user";
+import { updateProfileSchema, UpdateProfileSchemaValues } from "@/core/schemas/user/profile.schema";
 import { env } from "@/lib/env";
 import { ApiResponse, ApiResponseBuilder } from "@workspace/ui/lib/mappers/api-response-builder.mapper";
 import { cookies } from "next/headers";

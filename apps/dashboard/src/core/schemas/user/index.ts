@@ -10,3 +10,8 @@ export interface User {
 }
 
 export type UserRole = "admin" | "editor" | "reader";
+
+export interface UserProfile extends Omit<User, "deleted_at"> {
+    bio: string,
+    avatar_url?: string,
+}
