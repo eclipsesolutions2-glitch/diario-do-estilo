@@ -15,7 +15,7 @@ import {
   AvatarImage,
 } from "@workspace/ui/components/avatar";
 import { Button } from "@workspace/ui/components/button";
-import { formatInitials } from "@/src/lib/formats/format-initials";
+import { formatInitials } from "@workspace/ui/lib/formats/format-initials";
 
 export function HeaderUser() {
   const user = null;
@@ -49,7 +49,7 @@ interface HeaderUserDropdownProps {
 }
 
 function HeaderUserDropdown({ data: user }: HeaderUserDropdownProps) {
-  const handleSignOut = async () => {};
+  const handleSignOut = async () => { };
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
