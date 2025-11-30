@@ -8,7 +8,7 @@ interface FindOneArticleActionParams {
     slug: string;
 }
 
-export async function FindOneArticleAction({ slug }: FindOneArticleActionParams): Promise<ApiResponse<Article>> {
+export async function findOneArticleAction({ slug }: FindOneArticleActionParams): Promise<ApiResponse<Article>> {
     const storage = await cookies();
     const token = storage.get("dds-auth.session-token");
     if (!token) {

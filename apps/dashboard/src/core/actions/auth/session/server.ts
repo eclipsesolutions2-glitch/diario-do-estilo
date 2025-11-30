@@ -1,15 +1,15 @@
 "use server";
-import { User } from "@/core/schemas/user";
+import { UserProfile } from "@/core/schemas/user";
 import { env } from "@/lib/env";
 import { ApiResponse, ApiResponseBuilder } from "@workspace/ui/lib/mappers/api-response-builder.mapper";
 import { cookies } from "next/headers";
 
 interface GetSessionResponse {
     message: string,
-    user: User
+    user: UserProfile
 }
 
-export async function getSession(): Promise<ApiResponse<User>> {
+export async function getSession(): Promise<ApiResponse<UserProfile>> {
     const storage = await cookies();
     const token = storage.get("dds-auth.session-token");
 

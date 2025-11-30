@@ -16,7 +16,7 @@ interface Meta {
     total: number
 }
 
-export async function FindManyArticleAction(): Promise<ApiResponse<FindManyArticleActionResponse>> {
+export async function findManyArticleAction(): Promise<ApiResponse<FindManyArticleActionResponse>> {
     const storage = await cookies();
     const token = storage.get("dds-auth.session-token");
     if (!token) {
