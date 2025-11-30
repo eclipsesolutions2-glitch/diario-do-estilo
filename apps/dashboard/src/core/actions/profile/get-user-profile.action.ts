@@ -4,10 +4,6 @@ import { env } from "@/lib/env";
 import { ApiResponse, ApiResponseBuilder } from "@workspace/ui/lib/mappers/api-response-builder.mapper";
 import { cookies } from "next/headers";
 
-interface GetUserProfileActionResponse {
-    data: UserProfile
-}
-
 export async function getUserProfileAction(): Promise<ApiResponse<UserProfile>> {
     const storage = await cookies();
     const token = storage.get("dds-auth.session-token");
@@ -24,14 +20,14 @@ export async function getUserProfileAction(): Promise<ApiResponse<UserProfile>> 
                 "Authorization": `Bearer ${token.value}`
             }
         });
-        const json = await response.json().catch(() => null) as GetUserProfileActionResponse;
+        const json = await response.json().catch(() => null);
 
         if (!response.ok) {
             const msg = "Algo correu mal ao tentar buscar as informações de perfil";
             return ApiResponseBuilder.error(msg);
         }
 
-        return ApiResponseBuilder.success(json.data);
+        return ApiResponseBuilder.success(json);
     } catch (error) {
         const errorMessage = "Falha ao buscar as informações de perfil. ";
         console.error(`❌ ERROR: ${errorMessage}`, error);

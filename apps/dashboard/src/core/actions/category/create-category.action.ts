@@ -2,6 +2,7 @@
 import { createCategorySchema, CreateCategorySchemaValues } from "@/core/schemas/category/create-category.schema";
 import { env } from "@/lib/env";
 import { ApiResponse, ApiResponseBuilder } from "@workspace/ui/lib/mappers/api-response-builder.mapper";
+import { revalidateTag } from "next/cache";
 import { cookies } from "next/headers";
 
 export async function createCategoryAction(
@@ -23,7 +24,7 @@ export async function createCategoryAction(
 
     try {
         const { NEXT_PUBLIC_API_URL } = env;
-        const response = await fetch(`${NEXT_PUBLIC_API_URL}/api/v1/auth/categories`, {
+        const response = await fetch(`${NEXT_PUBLIC_API_URL}/api/v1/admin/categories`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -35,10 +36,13 @@ export async function createCategoryAction(
             })
         });
         const json = await response.json().catch(() => null);
+
         if (!response.ok) {
             const msg = "Algo correu mal ao tentar criar categoria";
             return ApiResponseBuilder.error(msg);
         }
+
+        revalidateTag("list-categories");
         return ApiResponseBuilder.success(json);
     } catch (error) {
         const errorMessage = "Falha ao criar categoria";

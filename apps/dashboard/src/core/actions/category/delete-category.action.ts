@@ -1,6 +1,7 @@
 "use server";
 import { env } from "@/lib/env";
 import { ApiResponse, ApiResponseBuilder } from "@workspace/ui/lib/mappers/api-response-builder.mapper";
+import { revalidateTag } from "next/cache";
 import { cookies } from "next/headers";
 
 export async function deleteCategoryAction({ slug }: { slug: string }): Promise<ApiResponse<boolean>> {
@@ -16,7 +17,7 @@ export async function deleteCategoryAction({ slug }: { slug: string }): Promise<
 
     try {
         const { NEXT_PUBLIC_API_URL } = env;
-        const response = await fetch(`${NEXT_PUBLIC_API_URL}/api/v1/auth/categories/${slug}`, {
+        const response = await fetch(`${NEXT_PUBLIC_API_URL}/api/v1/admin/categories/${slug}`, {
             method: "DELETE",
             headers: {
                 "Content-Type": "application/json",
@@ -30,6 +31,7 @@ export async function deleteCategoryAction({ slug }: { slug: string }): Promise<
             return ApiResponseBuilder.error(msg);
         }
 
+        revalidateTag("list-categories");
         return ApiResponseBuilder.success(json);
     } catch (error) {
         const errorMessage = "Falha ao apagar categoria";

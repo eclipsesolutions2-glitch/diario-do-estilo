@@ -2,6 +2,7 @@ import { Separator } from "@workspace/ui/components/separator";
 import { SidebarTrigger } from "@workspace/ui/components/sidebar";
 import { NotificationPopover } from "./notification-popover";
 import { GoToSite } from "./go-to-site";
+import { DynamicBreadcrumb } from "./dynamic-breadcrumb";
 
 export function Header() {
     return (
@@ -12,6 +13,7 @@ export function Header() {
                     orientation="vertical"
                     className="data-[orientation=vertical]:h-4"
                 />
+                <DynamicBreadcrumb />
             </div>
 
             <div className="flex items-center gap-3">

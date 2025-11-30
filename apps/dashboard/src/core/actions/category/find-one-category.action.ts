@@ -18,7 +18,7 @@ export async function findOneCategoryAction({ slug }: { slug: string }): Promise
 
     try {
         const { NEXT_PUBLIC_API_URL } = env;
-        const response = await fetch(`${NEXT_PUBLIC_API_URL}/api/v1/auth/categories/${slug}`, {
+        const response = await fetch(`${NEXT_PUBLIC_API_URL}/api/v1/admin/categories/${slug}`, {
             method: "GET",
             headers: {
                 "Authorization": `Bearer ${token.value}`

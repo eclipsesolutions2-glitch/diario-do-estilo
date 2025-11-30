@@ -1,16 +1,61 @@
+import { action } from "@/core/actions";
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@workspace/ui/components/card";
+import { Skeleton } from "@workspace/ui/components/skeleton";
+import { AvatarUploader } from "./avatar-uploader";
+import { ProfileInfoForm } from "../forms/profile-info.from";
 
-export function ProfileInfoCard() {
-    return (
-        <Card>
-            <CardHeader>
-                <CardTitle>Informações Pessoais</CardTitle>
-                <CardDescription>
-                    Atualize suas informações básicas de perfil
-                </CardDescription>
-            </CardHeader>
+export async function ProfileInfoCard() {
+    const result = await action.api.user.profile.getInfo();
 
-            <CardContent className="space-y-6"></CardContent>
-        </Card>
+    return (<Card>
+        <CardHeader>
+            <CardTitle>Informações Pessoais</CardTitle>
+            <CardDescription>
+                Atualize suas informações básicas de perfil
+            </CardDescription>
+        </CardHeader>
+
+        <CardContent className="space-y-6">
+            {!result.success ? (
+                <>
+                    <div>
+                        <Skeleton className="size-10 rounded-full" />
+                        <div className="flex flex-col gap-2">
+                            <Skeleton className="w-full h-4 rounded-md" />
+                            <Skeleton className="w-full h-4 rounded-md" />
+                        </div>
+                    </div>
+
+                    <div>
+                        <div className="grid grid-cols-2 gap-4">
+                            <Skeleton className="w-full h-4 rounded-md" />
+                            <Skeleton className="w-full h-4 rounded-md" />
+                            <Skeleton className="w-full h-4 rounded-md" />
+                            <Skeleton className="w-full h-4 rounded-md" />
+                        </div>
+
+                        <Skeleton className="w-1/3 h-4 rounded-md" />
+                    </div>
+                </>
+            ) : (
+                <>
+                    <AvatarUploader
+                        data={{
+                            name: result.data.name,
+                            image: result.data.avatar_url,
+                        }}
+                    />
+                    <ProfileInfoForm
+                        defaultValues={{
+                            name: result.data.name,
+                            email: result.data.email,
+                            username: result.data.username,
+                            bio: result.data.bio,
+                        }}
+                    />
+                </>
+            )}
+        </CardContent>
+    </Card>
     );
 }

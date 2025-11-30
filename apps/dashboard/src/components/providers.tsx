@@ -4,6 +4,7 @@ import * as React from "react";
 import { ThemeProvider as NextThemesProvider } from "next-themes";
 import { Toaster } from "@workspace/ui/components/sonner";
 import { SidebarProvider } from "@workspace/ui/components/sidebar";
+import { NuqsAdapter } from "nuqs/adapters/next/app";
 
 export function Providers({ children }: { children: React.ReactNode }) {
     return (
@@ -16,7 +17,9 @@ export function Providers({ children }: { children: React.ReactNode }) {
         >
             <Toaster />
             <SidebarProvider>
-                {children}
+                <NuqsAdapter>
+                    {children}
+                </NuqsAdapter>
             </SidebarProvider>
         </NextThemesProvider >
     );

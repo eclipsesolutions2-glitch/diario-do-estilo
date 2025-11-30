@@ -14,10 +14,13 @@ export async function findManyCategoryAction(): Promise<ApiResponse<Category[]>>
 
     try {
         const { NEXT_PUBLIC_API_URL } = env;
-        const response = await fetch(`${NEXT_PUBLIC_API_URL}/api/v1/auth/categories`, {
+        const response = await fetch(`${NEXT_PUBLIC_API_URL}/api/v1/admin/categories`, {
             method: "GET",
             headers: {
                 "Authorization": `Bearer ${token.value}`
+            },
+            next: {
+                tags: ["list-categories"]
             }
         });
         const json = await response.json().catch(() => null);

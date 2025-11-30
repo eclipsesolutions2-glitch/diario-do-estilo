@@ -1,10 +1,17 @@
 import z from "zod";
 
 export const updateProfileSchema = z.object({
-    name: z.string(),
-    username: z.string(),
-    email: z.string().email(),
-    bio: z.string().max(125)
+    name: z
+        .string()
+        .min(3, { message: "O nome deve ter no mínimo 3 caracteres." }),
+    email: z.string().email({ message: "Informe um e-mail válido." }),
+    username: z.string().min(3, {
+        message: "O nome de usuário deve ter no mínimo 3 caracteres.",
+    }),
+    bio: z
+        .string()
+        .min(3, { message: "A bio deve ter no mínimo 3 caracteres." })
+        .max(125, { message: "A bio deve ter no máximo 125 caracteres." }),
 });
 
 export type UpdateProfileSchemaValues = z.infer<typeof updateProfileSchema>;
