@@ -42,7 +42,6 @@
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
 
-
   /* Brand Style */
   --brand-50: oklch(0.978 0.046 196);
   --brand-100: oklch(0.933 0.116 196);
@@ -129,7 +128,6 @@
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
 
-
   --color-brand-50:  var(--brand-50);
   --color-brand-100: var(--brand-100);
   --color-brand-200: var(--brand-200);
@@ -141,7 +139,7 @@
   --color-brand-800: var(--brand-800);
   --color-brand-900: var(--brand-900);
   --color-brand-950: var(--brand-950);
-  
+
 }
 
 @layer base {
