@@ -66,7 +66,7 @@ export async function updateArticleAction(slug: string, formData: FormData): Pro
 
     try {
         const { NEXT_PUBLIC_API_URL } = env;
-        const response = await fetch(`${NEXT_PUBLIC_API_URL}/api/v1/auth/articles/${slug}`, {
+        const response = await fetch(`${NEXT_PUBLIC_API_URL}/api/v1/admin/articles/${slug}`, {
             method: "PUT",
             headers: {
                 "Authorization": `Bearer ${token.value}`

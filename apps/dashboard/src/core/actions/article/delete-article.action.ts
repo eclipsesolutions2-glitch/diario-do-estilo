@@ -1,6 +1,7 @@
 "use server";
 import { env } from "@/lib/env";
 import { ApiResponse, ApiResponseBuilder } from "@workspace/ui/lib/mappers/api-response-builder.mapper";
+import { revalidateTag } from "next/cache";
 import { cookies } from "next/headers";
 
 interface DeleteArticleActionParams {
@@ -20,7 +21,7 @@ export async function deleteArticleAction({ slug }: DeleteArticleActionParams): 
 
     try {
         const { NEXT_PUBLIC_API_URL } = env;
-        const response = await fetch(`${NEXT_PUBLIC_API_URL}/api/v1/auth/articles/${slug}`, {
+        const response = await fetch(`${NEXT_PUBLIC_API_URL}/api/v1/admin/articles/${slug}`, {
             method: "DELETE",
             headers: {
                 "Authorization": `Bearer ${token.value}`
@@ -31,6 +32,7 @@ export async function deleteArticleAction({ slug }: DeleteArticleActionParams): 
             const msg = "Algo correu mal ao tentar apagar um artigo";
             return ApiResponseBuilder.error(msg);
         }
+        revalidateTag("list-articles");
         return ApiResponseBuilder.success(json);
     } catch (error) {
         const errorMessage = "Falha ao apagar um artigo";

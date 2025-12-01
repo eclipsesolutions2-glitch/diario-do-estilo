@@ -16,7 +16,7 @@ export async function synchronizeArticleWithCategory(
     }
     try {
         const { NEXT_PUBLIC_API_URL } = env;
-        const response = await fetch(`${NEXT_PUBLIC_API_URL}/api/v1/auth/articles/${slug}/categories`,
+        const response = await fetch(`${NEXT_PUBLIC_API_URL}/api/v1/admin/articles/${slug}/categories`,
             {
                 method: "POST",
                 headers: {

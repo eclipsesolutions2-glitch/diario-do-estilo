@@ -20,7 +20,7 @@ export async function restoreArticleAction({ slug }: RestoreArticleActionParams)
 
     try {
         const { NEXT_PUBLIC_API_URL } = env;
-        const response = await fetch(`${NEXT_PUBLIC_API_URL}/api/v1/auth/articles/${slug}/restore`, {
+        const response = await fetch(`${NEXT_PUBLIC_API_URL}/api/v1/admin/articles/${slug}/restore`, {
             method: "POST",
             headers: {
                 "Authorization": `Bearer ${token.value}`

@@ -21,7 +21,7 @@ export async function findOneArticleAction({ slug }: FindOneArticleActionParams)
 
     try {
         const { NEXT_PUBLIC_API_URL } = env;
-        const response = await fetch(`${NEXT_PUBLIC_API_URL}/api/v1/auth/articles/${slug}`, {
+        const response = await fetch(`${NEXT_PUBLIC_API_URL}/api/v1/admin/articles/${slug}`, {
             method: "GET",
             headers: {
                 "Authorization": `Bearer ${token.value}`

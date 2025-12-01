@@ -24,10 +24,13 @@ export async function findManyArticleAction(): Promise<ApiResponse<FindManyArtic
     }
     try {
         const { NEXT_PUBLIC_API_URL } = env;
-        const response = await fetch(`${NEXT_PUBLIC_API_URL}/api/v1/auth/articles`, {
+        const response = await fetch(`${NEXT_PUBLIC_API_URL}/api/v1/admin/articles`, {
             method: "GET",
             headers: {
                 "Authorization": `Bearer ${token.value}`
+            },
+            next: {
+                tags: ["list-articles"]
             }
         });
         const json = await response.json().catch(() => null) as FindManyArticleActionResponse;
