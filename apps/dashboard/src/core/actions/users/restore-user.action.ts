@@ -2,6 +2,7 @@
 import { User } from "@/core/schemas/user";
 import { env } from "@/lib/env";
 import { ApiResponse, ApiResponseBuilder } from "@workspace/ui/lib/mappers/api-response-builder.mapper";
+import { revalidateTag } from "next/cache";
 import { cookies } from "next/headers";
 
 interface RestoreUserActionParams {
@@ -39,6 +40,7 @@ export async function restoreUserAction({ userId }: RestoreUserActionParams): Pr
             return ApiResponseBuilder.error(msg);
         }
 
+        revalidateTag("list-users");
         return ApiResponseBuilder.success(json);
     } catch (error) {
         const errorMessage = "Falha ao  reativar a conta. ";

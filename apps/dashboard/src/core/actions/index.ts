@@ -6,6 +6,7 @@ import { findManyArticleAction } from "./article/find-many-article.action";
 import { findOneArticleAction } from "./article/find-one-article.action";
 import { restoreArticleAction } from "./article/restore-article.action";
 import { updateArticleAction } from "./article/update-article.action";
+import { registerUserAction } from "./auth/register-user.action";
 import { useSession } from "./auth/session/client";
 import { getSession } from "./auth/session/server";
 import { signInAction } from "./auth/sign-in.action";
@@ -39,6 +40,7 @@ export const action = {
             findOne: findOneUserAction,
             inactive: inactiveUserAction,
             restore: restoreUserAction,
+            create: registerUserAction,
             profile: {
                 getInfo: getUserProfileAction,
                 update: updateProfileAction
