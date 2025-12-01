@@ -31,6 +31,7 @@ import {
 } from "@workspace/ui/components/sidebar";
 import { action } from "@/core/actions";
 import { toast } from "sonner";
+import { useRouter } from "next/navigation";
 
 export function SidebarNavUser({
     user,
@@ -41,6 +42,7 @@ export function SidebarNavUser({
         avatar: string
     }
 }) {
+    const router = useRouter();
     const { isMobile } = useSidebar();
 
     const handleSignOut = async () => {
@@ -51,6 +53,7 @@ export function SidebarNavUser({
         }
 
         toast.success(result.message);
+        router.replace("/sign-in");
     };
 
     return (

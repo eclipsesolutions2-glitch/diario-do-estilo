@@ -62,6 +62,9 @@ export const columns: ColumnDef<Category>[] = [
         accessorKey: "created_by",
         header: () => <div className="font-bold">Autor</div>,
         cell: ({ row }) => {
+            if (!row.original.created_by) {
+                return "---";
+            }
             return <div className="flex flex-col">
                 <span>{row.original.created_by.name}</span>
                 <span className="text-xs text-muted-foreground ">{row.original.created_by.email}</span>

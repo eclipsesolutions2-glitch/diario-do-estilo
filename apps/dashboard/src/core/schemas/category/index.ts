@@ -1,14 +1,11 @@
+import { User } from "../user";
+
 export interface Category {
     id: number;
     name: string;
     slug: string;
     description: string;
-    created_by: {
-        id: number;
-        name: string;
-        email: string;
-    };
+    created_by: User;
     "created_at": string;
     "updated_at": string;
-    "deleted_at"?: string;
 }
