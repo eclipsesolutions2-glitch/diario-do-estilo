@@ -14,11 +14,9 @@ export async function createArticleAction(formData: FormData): Promise<ApiRespon
         return ApiResponseBuilder.error("Sessão expirada. Faça login novamente.");
     }
 
-    // 🔥 conversor universal
     const toBool = (v: FormDataEntryValue | null) =>
         v === "true" || v === "on" || v === "1";
 
-    // 🔥 Corrigido: converte antes de passar ao schema
     const row = {
         title: formData.get("title"),
         slug: formData.get("slug"),
@@ -37,7 +35,6 @@ export async function createArticleAction(formData: FormData): Promise<ApiRespon
         return ApiResponseBuilder.error(parsed.error.message);
     }
 
-    // monta body para API
     const body = new FormData();
 
     body.append("title", parsed.data.title);
