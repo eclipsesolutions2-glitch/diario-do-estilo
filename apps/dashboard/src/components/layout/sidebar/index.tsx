@@ -19,7 +19,7 @@ export async function Sidebar({ ...props }: React.ComponentProps<typeof RootSide
     const session = await action.api.auth.getSession();
     return (
         <RootSidebar collapsible="icon" className={cn("group", props.className)} {...props}>
-            <SidebarHeader className="group-data-[collapsed=true]:p-4">
+            <SidebarHeader className="group-data-[collapsed=true]:p-4 bg-white">
                 <div className="flex items-center gap-2">
                     <div className="relative bg-brand-700/5 text-sidebar-primary-foreground flex aspect-square size-8 items-center justify-center rounded-lg">
                         <Image src="/images/logo-app-white.svg" alt="Logo do diário do estilo" fill className="object-cover" />
@@ -30,7 +30,7 @@ export async function Sidebar({ ...props }: React.ComponentProps<typeof RootSide
                     </div>
                 </div>
             </SidebarHeader>
-            <SidebarContent className="mt-4">
+            <SidebarContent className="pt-4 bg-white">
                 <nav className="flex-1">
                     {Object.entries(NAV_LINKS).map(([key, value]) => (
                         <SidebarGroup key={key} >
@@ -53,7 +53,7 @@ export async function Sidebar({ ...props }: React.ComponentProps<typeof RootSide
                     ))}
                 </nav>
             </SidebarContent>
-            <SidebarFooter>
+            <SidebarFooter className="bg-white">
                 <ThemeToggle />
                 {session.success ? (<SidebarNavUser user={{
                     name: session.data.name,

@@ -20,6 +20,7 @@ import { findManyNotificationAction } from "./notifications/find-many-notificati
 import { findManyUnReadNotificationAction } from "./notifications/find-many-unread-notification.action";
 import { markAllReadNotificationAction } from "./notifications/mark-all-read-notification.action";
 import { markOneReadNotificationAction } from "./notifications/mark-one-read-notification.action";
+import { overviewDashboardAction } from "./overvew";
 import { getUserProfileAction } from "./profile/get-user-profile.action";
 import { updateProfileAction } from "./profile/update-profile.action";
 import { findManyUserAction } from "./users/find-many-user.action";
@@ -29,6 +30,7 @@ import { restoreUserAction } from "./users/restore-user.action";
 
 export const action = {
     api: {
+        overview: overviewDashboardAction,
         auth: {
             getSession,
             useSession,

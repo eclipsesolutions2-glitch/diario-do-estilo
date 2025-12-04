@@ -61,13 +61,13 @@ export function InfoMoreAction({ data }: InfoMoreActionProps) {
                     {/* Autor */}
                     <Field
                         label="Autor"
-                        value={`${data.author?.name} ({data.author.email})`}
+                        value={`${data.author?.name}`}
                     />
 
                     {/* Editor */}
                     <Field
                         label="Editor"
-                        value={"{data.publisher.name} ({data.publisher.email})"}
+                        value={`${data.published_by?.name}`}
                     />
 
                     {/* Status */}
@@ -83,16 +83,16 @@ export function InfoMoreAction({ data }: InfoMoreActionProps) {
                     />
 
                     {/* Datas */}
-                    <Field
+                    {/* <Field
                         label="Criado em"
                         // data.created_at
-                        value={new Date().toLocaleString("pt-PT")}
-                    />
-                    <Field
+                        value={formatDate(data)}
+                    /> */}
+                    {/* <Field
                         label="Atualizado em"
                         // data.updated_at
                         value={new Date().toLocaleString("pt-PT")}
-                    />
+                    /> */}
 
                     {/* Capa */}
                     <div className="flex flex-col gap-2 col-span-2">
@@ -102,7 +102,7 @@ export function InfoMoreAction({ data }: InfoMoreActionProps) {
                         <div className="relative h-32 overflow-hidden w-full rounded-md border">
                             <Image
                                 //data.coverImage.path ??
-                                src={"/images/placeholder.svg"}
+                                src={data.cover_image ?? "/images/placeholder.svg"}
                                 alt="cover"
                                 fill
                                 className="object-cover "

@@ -34,13 +34,15 @@ export const columns: ColumnDef<Article>[] = [
         cell: ({ row }) => {
             const image = row.original.cover_image ? `${row.original.cover_image}` : "/images/placeholder.svg";
             return (
-                <div className="flex justify-center relative h-10 w-16 rounded border overflow-hidden">
-                    <Image
-                        src={image}
-                        alt="cover"
-                        fill
-                        className="object-cover "
-                    />
+                <div className="flex items-center justify-center">
+                    <div className="flex justify-center relative h-10 w-16 rounded border overflow-hidden">
+                        <Image
+                            src={image}
+                            alt="cover"
+                            fill
+                            className="object-cover "
+                        />
+                    </div>
                 </div>
             );
         },
@@ -51,7 +53,9 @@ export const columns: ColumnDef<Article>[] = [
         header: () => <div className="font-bold">Título</div>,
         cell: ({ row }) => (
             <div className="flex flex-col gap-0.5">
-                <span className="font-medium">{row.original.title}</span>
+                <span className="font-medium text-xs max-w-40 text-muted-foreground overflow-hidden text-ellipsis whitespace-nowrap">
+                    {row.original.title}
+                </span>
 
                 {/* Excerpt clamped */}
                 <span className="text-xs text-muted-foreground line-clamp-1 max-w-56">
@@ -66,7 +70,7 @@ export const columns: ColumnDef<Article>[] = [
         accessorKey: "slug",
         header: () => <div className="font-bold">Slug</div>,
         cell: ({ row }) => (
-            <Badge variant="secondary" className="rounded-md">
+            <Badge variant="secondary" className="rounded-md text-xs max-w-20 text-muted-foreground overflow-hidden text-ellipsis whitespace-nowrap">
                 {row.original.slug}
             </Badge>
         ),

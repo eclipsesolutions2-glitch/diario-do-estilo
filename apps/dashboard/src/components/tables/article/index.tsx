@@ -156,7 +156,7 @@ export function TableListArticle({ data }: TableListArticleProps) {
                                     <div className="flex flex-col items-center gap-2 text-muted-foreground">
                                         <SearchX size={32} />
                                         <span>
-                                            Nenhuma categoria encontrada
+                                            Nenhum artigo encontrado
                                         </span>
                                     </div>
                                 </TableCell>
@@ -169,7 +169,7 @@ export function TableListArticle({ data }: TableListArticleProps) {
             <div className="flex items-center justify-between py-4 text-sm text-muted-foreground">
                 <span>
                     {table.getFilteredSelectedRowModel().rows.length} de{" "}
-                    {table.getFilteredRowModel().rows.length} categorias
+                    {table.getFilteredRowModel().rows.length} artigos
                     exibidos
                 </span>
                 <div className="space-x-2">
