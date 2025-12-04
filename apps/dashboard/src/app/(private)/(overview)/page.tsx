@@ -46,14 +46,15 @@ export default async function Page() {
                     <OverviewCard key={item.id}>
                         <OverviewCardIcon
                             icon={item.icon}
-                            className={`${idx === 0 || idx === 7
+                            className={(idx === 0 || idx === 7)
                                 ? "text-green-600 bg-green-400/10"
-                                : idx === 1 || idx == 6
+                                : (idx === 1 || idx === 6)
                                     ? "text-blue-600 bg-blue-400/10"
-                                    : idx === 2 || idx === 5
+                                    : (idx === 2 || idx === 5)
                                         ? "text-amber-600 bg-amber-400/10"
-                                        : idx === 3 || idx === 4 &&
-                                        "text-lime-600 bg-lime-400/10"}`}
+                                        : (idx === 3 || idx === 4)
+                                            ? "text-lime-600 bg-lime-400/10"
+                                            : ""}
                         />
                         <OverviewCardContent
                             title={item.title}

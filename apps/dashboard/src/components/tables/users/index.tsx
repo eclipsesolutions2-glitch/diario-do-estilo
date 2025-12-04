@@ -68,7 +68,10 @@ export function TableListUser({ data }: TableListUserProps) {
         },
     });
 
-    const { search, setSearch } = useSearchColumnFilter(table, "name");
+    const { search, setSearch } = useSearchColumnFilter(table, "name", {
+        queryKey: "page",
+        debounceMs: 250
+    });
 
     return (
         <div className="w-full">

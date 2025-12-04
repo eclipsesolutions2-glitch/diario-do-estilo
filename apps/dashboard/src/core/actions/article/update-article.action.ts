@@ -40,7 +40,7 @@ export async function updateArticleAction(slug: string, formData: FormData): Pro
     if (parsed.data.excerpt) body.append("excerpt", parsed.data.excerpt);
     body.append("content", parsed.data.content);
 
-    if (parsed.data.is_published)
+    /* if (parsed.data.is_published)
         body.append(
             "is_published",
             parsed.data.is_published !== null
@@ -53,16 +53,16 @@ export async function updateArticleAction(slug: string, formData: FormData): Pro
             parsed.data.is_featured !== null
                 ? String(parsed.data.is_featured)
                 : "",
-        );
+        ); */
 
     if (parsed.data.cover_image)
         body.append("cover_image", parsed.data.cover_image);
 
-    if (parsed.data.gallery_images?.length) {
+    /* if (parsed.data.gallery_images?.length) {
         parsed.data.gallery_images.forEach((file) => {
             body.append("gallery_images[]", file);
         });
-    }
+    } */
 
     try {
         const { NEXT_PUBLIC_API_URL } = env;

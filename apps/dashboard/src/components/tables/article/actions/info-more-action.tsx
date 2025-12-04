@@ -34,8 +34,6 @@ export function InfoMoreAction({ data }: InfoMoreActionProps) {
                 </DialogHeader>
 
                 <div className="grid grid-cols-2 gap-4 text-sm">
-                    {/* ID */}
-                    <Field label="ID" value={data.id} />
 
                     {/* Título */}
                     <Field label="Título" value={data.title} />

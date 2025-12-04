@@ -2,10 +2,11 @@ import { z } from "zod";
 import { formatSlug } from "@/lib/formats/format-slug";
 
 export const createArticleSchema = z.object({
-    title: z.string().min(3).max(150),
+    title: z.string().min(3).max(80),
     slug: z
         .string()
         .min(3)
+        .max(100)
         .refine((field) => formatSlug(field)),
     excerpt: z.string().max(500).optional(),
     content: z.string().min(10),

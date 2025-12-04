@@ -24,8 +24,11 @@ export function OverviewCardContent({
                 </span>
                 <Tooltip>
                     <TooltipTrigger asChild>
-                        <Info className="w-4 h-4 sm:w-5 sm:h-5 text-muted-foreground hover:text-foreground transition-colors cursor-pointer" />
+                        <button type="button" className="p-0 m-0 bg-transparent border-none cursor-pointer">
+                            <Info className="w-4 h-4 sm:w-5 sm:h-5 text-muted-foreground hover:text-foreground transition-colors" />
+                        </button>
                     </TooltipTrigger>
+
                     <TooltipContent side="top">
                         <p className="text-sm sm:text-base">{description}</p>
                     </TooltipContent>

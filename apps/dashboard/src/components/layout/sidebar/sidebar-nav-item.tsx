@@ -11,13 +11,13 @@ interface SidebarNavItemProps {
 export function SidebarNavItem({ isActive = true, ...data }: SidebarNavItemProps) {
     return (
         <SidebarMenuItem>
-            <SidebarMenuButton tooltip={data.label} asChild disabled={!isActive}>
-                <Link href={data.href}
-                    className="data-[state=open]:p-4">
+            <Link href={data.href}
+                className="data-[state=open]:p-4">
+                <SidebarMenuButton tooltip={data.label} disabled={!isActive}>
                     {data.icon && <data.icon />}
                     <span>{data.label}</span>
-                </Link>
-            </SidebarMenuButton>
+                </SidebarMenuButton>
+            </Link>
         </SidebarMenuItem>
     );
 }

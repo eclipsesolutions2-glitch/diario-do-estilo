@@ -11,7 +11,7 @@ import {
 
 export function AccountActionsCard() {
     return (
-        <Card>
+        <Card className="shadow-none">
             <CardHeader>
                 <CardTitle>Ações da Conta</CardTitle>
                 <CardDescription>Gerencie sua conta e dados</CardDescription>

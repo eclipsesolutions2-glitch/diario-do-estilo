@@ -27,7 +27,7 @@ export function UpdateMoreAction({ data }: UpdateMoreActionProps) {
                     <span>Actualizar</span>
                 </DropdownMenuItem>
             </DialogTrigger>
-            <DialogContent>
+            <DialogContent className="md:min-w-2xl lg:min-w-3xl xl:min-w-4xl">
                 <DialogHeader>
                     <DialogTitle>Atualizar gasto</DialogTitle>
                     <DialogDescription>
