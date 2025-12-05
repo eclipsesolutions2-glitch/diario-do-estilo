@@ -114,7 +114,7 @@ export default function CoverImageField({
                                                 type="button"
                                                 className="z-50 flex size-8 cursor-pointer items-center justify-center rounded-full bg-black/60 text-white transition-[color,box-shadow] outline-none hover:bg-black/80 focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50"
                                                 onClick={() =>
-                                                    removeFile(files[0]?.id)
+                                                    files[0]?.id && removeFile(files[0].id)
                                                 }
                                                 aria-label="Remove image"
                                             >
