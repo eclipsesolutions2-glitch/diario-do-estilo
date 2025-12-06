@@ -16,15 +16,22 @@ export default async function Page() {
 
 	if (!result.success) {
 		return (
-			<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+			<div>
 				<div className="space-y-4">
-					<Skeleton className="min-h-12" />
-					<Skeleton className="min-h-8" />
+					<Skeleton className="min-h-12 w-3/4" />
+					<Skeleton className="min-h-8 w-3/5" />
 				</div>
-				<Skeleton className="min-h-32" />
-				<Skeleton className="min-h-32" />
-				<Skeleton className="min-h-32" />
-				<Skeleton className="min-h-32" />
+				<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+					<Skeleton className="min-h-32" />
+					<Skeleton className="min-h-32" />
+					<Skeleton className="min-h-32" />
+					<Skeleton className="min-h-32" />
+				</div>
+
+				<div className="flex items-center gap-4">
+					<Skeleton className="min-h-52" />
+					<Skeleton className="min-h-52" />
+				</div>
 			</div>
 		);
 	}
