@@ -8,10 +8,10 @@ import { ptBR } from "date-fns/locale";
  */
 
 export function formatDate(date: string | Date): string {
-    return formatDistance(new Date(date), new Date(), {
-        addSuffix: true,
-        locale: ptBR,
-    });
+  return formatDistance(new Date(date), new Date(), {
+    addSuffix: true,
+    locale: ptBR,
+  });
 }
 
 /**
@@ -20,8 +20,8 @@ export function formatDate(date: string | Date): string {
  */
 
 export function formatDateFull(input: Date | string): string {
-    const date = input instanceof Date ? input : new Date(input);
-    return format(date, "dd 'de' MMMM 'de' yyyy", { locale: ptBR });
+  const date = input instanceof Date ? input : new Date(input);
+  return format(date, "dd 'de' MMMM 'de' yyyy", { locale: ptBR });
 }
 
 /**
@@ -31,9 +31,9 @@ export function formatDateFull(input: Date | string): string {
  */
 
 export function getDayOfWeek(n: number): string {
-    if (typeof n !== "number" || !Number.isFinite(n)) return "";
-    const offset = (((n - 1) % 7) + 7) % 7;
-    const baseMonday = new Date(2025, 8, 1);
+  if (typeof n !== "number" || !Number.isFinite(n)) return "";
+  const offset = (((n - 1) % 7) + 7) % 7;
+  const baseMonday = new Date(2025, 8, 1);
 
-    return format(addDays(baseMonday, offset), "EEEE", { locale: ptBR });
+  return format(addDays(baseMonday, offset), "EEEE", { locale: ptBR });
 }

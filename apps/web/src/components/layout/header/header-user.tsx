@@ -49,7 +49,7 @@ interface HeaderUserDropdownProps {
 }
 
 function HeaderUserDropdown({ data: user }: HeaderUserDropdownProps) {
-  const handleSignOut = async () => { };
+  const handleSignOut = async () => {};
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>

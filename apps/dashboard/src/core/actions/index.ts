@@ -29,49 +29,49 @@ import { inactiveUserAction } from "./users/inactive-user.action";
 import { restoreUserAction } from "./users/restore-user.action";
 
 export const action = {
-    api: {
-        overview: overviewDashboardAction,
-        auth: {
-            getSession,
-            useSession,
-            signIn: signInAction,
-            signOut: signOutAction,
-        },
-        user: {
-            findMany: findManyUserAction,
-            findOne: findOneUserAction,
-            inactive: inactiveUserAction,
-            restore: restoreUserAction,
-            create: registerUserAction,
-            profile: {
-                getInfo: getUserProfileAction,
-                update: updateProfileAction
-            }
-        },
-        notification: {
-            findMany: findManyNotificationAction,
-            findManyUnRead: findManyUnReadNotificationAction,
-            markAllRead: markAllReadNotificationAction,
-            markOneRead: markOneReadNotificationAction
-        },
-        category: {
-            findMany: findManyCategoryAction,
-            findOne: findOneCategoryAction,
-            create: createCategoryAction,
-            delete: deleteCategoryAction,
-            update: updateCategoryAction
-        },
-        article: {
-            findMany: findManyArticleAction,
-            findOne: findOneArticleAction,
-            create: createArticleAction,
-            delete: deleteArticleAction,
-            update: updateArticleAction,
-            restore: restoreArticleAction,
-            sync: {
-                desynchronize: desynchronizeArticleWithCategory,
-                synchronize: synchronizeArticleWithCategory,
-            }
-        }
+  api: {
+    overview: overviewDashboardAction,
+    auth: {
+      getSession,
+      useSession,
+      signIn: signInAction,
+      signOut: signOutAction,
     },
+    user: {
+      findMany: findManyUserAction,
+      findOne: findOneUserAction,
+      inactive: inactiveUserAction,
+      restore: restoreUserAction,
+      create: registerUserAction,
+      profile: {
+        getInfo: getUserProfileAction,
+        update: updateProfileAction,
+      },
+    },
+    notification: {
+      findMany: findManyNotificationAction,
+      findManyUnRead: findManyUnReadNotificationAction,
+      markAllRead: markAllReadNotificationAction,
+      markOneRead: markOneReadNotificationAction,
+    },
+    category: {
+      findMany: findManyCategoryAction,
+      findOne: findOneCategoryAction,
+      create: createCategoryAction,
+      delete: deleteCategoryAction,
+      update: updateCategoryAction,
+    },
+    article: {
+      findMany: findManyArticleAction,
+      findOne: findOneArticleAction,
+      create: createArticleAction,
+      delete: deleteArticleAction,
+      update: updateArticleAction,
+      restore: restoreArticleAction,
+      sync: {
+        desynchronize: desynchronizeArticleWithCategory,
+        synchronize: synchronizeArticleWithCategory,
+      },
+    },
+  },
 };

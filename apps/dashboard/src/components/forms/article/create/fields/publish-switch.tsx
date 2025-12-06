@@ -21,10 +21,7 @@ export default function PublishSwitch({
                 <FormItem className="flex items-center gap-2">
                     <FormLabel>Publicar</FormLabel>
                     <FormControl>
-                        <Switch
-                            checked={field.value}
-                            onCheckedChange={field.onChange}
-                        />
+                        <Switch checked={field.value} onCheckedChange={field.onChange} />
                     </FormControl>
                 </FormItem>
             )}

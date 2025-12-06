@@ -14,7 +14,10 @@ import {
     FormLabel,
     FormMessage,
 } from "@workspace/ui/components/form";
-import { createArticleSchema, CreateArticleSchemaValues } from "@/core/schemas/article/create-article.schama";
+import {
+    createArticleSchema,
+    CreateArticleSchemaValues,
+} from "@/core/schemas/article/create-article.schama";
 import { action } from "@/core/actions";
 import { formatSlug } from "@/lib/formats/format-slug";
 import { Input } from "@workspace/ui/components/input";
@@ -63,8 +66,7 @@ export function ArticleForm({ onFinishSubmit }: ArticleFormProps) {
                 values.is_featured !== null ? String(values.is_featured) : "",
             );
 
-        if (values.cover_image)
-            formData.append("cover_image", values.cover_image);
+        if (values.cover_image) formData.append("cover_image", values.cover_image);
 
         if (values.gallery_images?.length) {
             values.gallery_images.forEach((file) => {
@@ -105,24 +107,14 @@ export function ArticleForm({ onFinishSubmit }: ArticleFormProps) {
                                 <FormItem>
                                     <FormLabel>Slug</FormLabel>
                                     <FormControl>
-                                        <Input
-                                            placeholder="titulo-do-artigo"
-                                            {...field}
-                                            disabled
-                                        />
+                                        <Input placeholder="titulo-do-artigo" {...field} disabled />
                                     </FormControl>
                                     <FormMessage />
                                 </FormItem>
                             )}
                         />
-                        <ExcerptField
-                            form={form}
-                            className="col-span-1 md:col-span-2"
-                        />
-                        <ContentField
-                            form={form}
-                            className="col-span-1 md:col-span-2"
-                        />
+                        <ExcerptField form={form} className="col-span-1 md:col-span-2" />
+                        <ContentField form={form} className="col-span-1 md:col-span-2" />
 
                         <div className="flex gap-4">
                             <PublishSwitch form={form} />
@@ -183,20 +175,26 @@ export function ArticleForm({ onFinishSubmit }: ArticleFormProps) {
                                 <FormMessage />
 
                                 <div>
-                                    {Array.isArray(field.value) &&
-                                        field.value.length > 0 && (
-                                            <div className="grid grid-cols-2 gap-4 md:grid-cols-3">
-                                                {field.value.map((file) => (
-                                                    <div key={file.name} className="relative aspect-square rounded-md bg-accent">
-                                                        <Image src={URL.createObjectURL(file) ?? "/images/placeholder.svg"}
-                                                            alt={file.name}
-                                                            fill
-                                                            className="size-full rounded-[inherit] object-cover"
-                                                        />
-                                                    </div>
-                                                ))}
-                                            </div>
-                                        )}
+                                    {Array.isArray(field.value) && field.value.length > 0 && (
+                                        <div className="grid grid-cols-2 gap-4 md:grid-cols-3">
+                                            {field.value.map((file) => (
+                                                <div
+                                                    key={file.name}
+                                                    className="relative aspect-square rounded-md bg-accent"
+                                                >
+                                                    <Image
+                                                        src={
+                                                            URL.createObjectURL(file) ??
+                                                            "/images/placeholder.svg"
+                                                        }
+                                                        alt={file.name}
+                                                        fill
+                                                        className="size-full rounded-[inherit] object-cover"
+                                                    />
+                                                </div>
+                                            ))}
+                                        </div>
+                                    )}
                                 </div>
                             </FormItem>
                         )}

@@ -1,11 +1,11 @@
 import type { ReactNode } from "react";
 
 type NotificationItemActionsProps = {
-    children: ReactNode;
+  children: ReactNode;
 };
 
 export function NotificationItemActions({
-    children,
+  children,
 }: NotificationItemActionsProps) {
-    return <div className="flex gap-2 self-center">{children}</div>;
+  return <div className="flex gap-2 self-center">{children}</div>;
 }

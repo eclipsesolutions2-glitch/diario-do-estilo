@@ -1,24 +1,24 @@
 export interface Article {
-    id: number
-    slug: string
-    title: string
-    excerpt: string
-    content: string
-    author?: Author
-    published_by?: PublishedBy
-    is_published: boolean
-    is_featured: boolean
-    published_at?: string
-    view_count: number
-    cover_image?: string
+  id: number;
+  slug: string;
+  title: string;
+  excerpt: string;
+  content: string;
+  author?: Author;
+  published_by?: PublishedBy;
+  is_published: boolean;
+  is_featured: boolean;
+  published_at?: string;
+  view_count: number;
+  cover_image?: string;
 }
 
 interface Author {
-    id: number
-    name: string
+  id: number;
+  name: string;
 }
 
 interface PublishedBy {
-    id: number
-    name: string
+  id: number;
+  name: string;
 }
