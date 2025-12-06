@@ -1,8 +1,8 @@
 "use client";
-import { User } from "@/core/schemas/user";
-import { env } from "@/lib/env";
 import { parseCookies } from "nookies";
 import { useEffect, useState } from "react";
+import type { User } from "@/core/schemas/user";
+import { env } from "@/lib/env";
 
 interface GetSessionResponse {
 	message: string;

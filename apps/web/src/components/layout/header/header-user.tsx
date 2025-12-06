@@ -1,21 +1,20 @@
 "use client";
-import { LogOut, User } from "lucide-react";
-import Link from "next/link";
-import { toast } from "sonner";
-import {
-	DropdownMenu,
-	DropdownMenuTrigger,
-	DropdownMenuContent,
-	DropdownMenuItem,
-	DropdownMenuSeparator,
-} from "@workspace/ui/components/dropdown-menu";
 import {
 	Avatar,
 	AvatarFallback,
 	AvatarImage,
 } from "@workspace/ui/components/avatar";
 import { Button } from "@workspace/ui/components/button";
+import {
+	DropdownMenu,
+	DropdownMenuContent,
+	DropdownMenuItem,
+	DropdownMenuSeparator,
+	DropdownMenuTrigger,
+} from "@workspace/ui/components/dropdown-menu";
 import { formatInitials } from "@workspace/ui/lib/formats/format-initials";
+import { LogOut, User } from "lucide-react";
+import Link from "next/link";
 
 export function HeaderUser() {
 	const user = null;

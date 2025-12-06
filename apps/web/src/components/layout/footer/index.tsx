@@ -1,6 +1,6 @@
 import { Facebook, Instagram } from "lucide-react";
 import Link from "next/link";
-import { LogoDiario } from "../logo-diario";
+import { LogoDiario } from "../logo-diario.js";
 
 export function Footer() {
 	return (

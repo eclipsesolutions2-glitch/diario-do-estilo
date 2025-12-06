@@ -1,7 +1,5 @@
 "use client";
 
-import { Search } from "lucide-react";
-import { useQueryState } from "nuqs";
 import { Badge } from "@workspace/ui/components/badge";
 import { Button } from "@workspace/ui/components/button";
 import {
@@ -14,6 +12,8 @@ import {
 } from "@workspace/ui/components/dialog";
 import { Input } from "@workspace/ui/components/input";
 import { ScrollArea } from "@workspace/ui/components/scroll-area";
+import { Search } from "lucide-react";
+import { useQueryState } from "nuqs";
 
 export function HeaderSearch() {
 	const [search, setSearch] = useQueryState("search", { defaultValue: "" });

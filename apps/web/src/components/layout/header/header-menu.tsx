@@ -1,8 +1,7 @@
 import Link from "next/link";
-import { HeaderSearch } from "./header-search";
-import { HeaderUser } from "./header-user";
-import Image from "next/image";
-import { LogoDiario } from "../logo-diario";
+import { LogoDiario } from "../logo-diario.js";
+import { HeaderSearch } from "./header-search.js";
+import { HeaderUser } from "./header-user.js";
 
 export function HeaderMenu() {
 	return (

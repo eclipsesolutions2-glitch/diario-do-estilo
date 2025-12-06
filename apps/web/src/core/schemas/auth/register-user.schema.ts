@@ -15,7 +15,7 @@ export const registerUserSchema = z
 		passwordConfirmation: z
 			.string()
 			.min(8, { message: "Deve ter no mínimo 8 caracteres" }),
-		role: z.enum(["reader", "admin"]),
+		role: z.enum(["reader", "admin", "editor"]).default("reader"),
 	})
 	.refine((data) => data.password === data.passwordConfirmation, {
 		message: "As senhas devem ser iguais",

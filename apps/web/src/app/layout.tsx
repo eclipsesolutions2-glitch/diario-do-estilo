@@ -1,19 +1,12 @@
-import { Geist, Geist_Mono } from "next/font/google";
+import { Sora } from "next/font/google";
 
 import "@workspace/ui/globals.css";
+import type { Metadata } from "next";
 import { Providers } from "@/components/providers";
-import { Metadata } from "next";
-import { Header } from "../components/layout/header";
-import { Footer } from "../components/layout/footer";
 
-const fontSans = Geist({
+const fontSans = Sora({
 	subsets: ["latin"],
 	variable: "--font-sans",
-});
-
-const fontMono = Geist_Mono({
-	subsets: ["latin"],
-	variable: "--font-mono",
 });
 
 export const metadata: Metadata = {
@@ -30,15 +23,9 @@ export default function RootLayout({
 	children: React.ReactNode;
 }>) {
 	return (
-		<html lang="pt" suppressHydrationWarning>
-			<body
-				className={`${fontSans.variable} ${fontMono.variable} font-sans antialiased `}
-			>
-				<Providers>
-					<Header />
-					{children}
-					<Footer />
-				</Providers>
+		<html lang="pt">
+			<body className={`${fontSans.variable} font-sans antialiased `}>
+				<Providers>{children}</Providers>
 			</body>
 		</html>
 	);

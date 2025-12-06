@@ -1,15 +1,15 @@
 "use server";
 import {
-	registerUserSchema,
-	RegisterUserSchemaValues,
-} from "@/core/schemas/auth/register-user.schema";
-import { User } from "@/core/schemas/user";
-import { env } from "@/lib/env";
-import {
-	ApiResponse,
+	type ApiResponse,
 	ApiResponseBuilder,
 } from "@workspace/ui/lib/mappers/api-response-builder.mapper";
 import { cookies } from "next/headers";
+import {
+	type RegisterUserSchemaValues,
+	registerUserSchema,
+} from "@/core/schemas/auth/register-user.schema";
+import type { User } from "@/core/schemas/user";
+import { env } from "@/lib/env";
 
 interface RegisterUserResponse {
 	message: string;

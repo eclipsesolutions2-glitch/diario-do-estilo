@@ -1,6 +1,6 @@
-import { HeaderBanner } from "./header-banner";
-import { HeaderMenu } from "./header-menu";
-import { HeaderNavigation } from "./header-navigation";
+import { HeaderBanner } from "./header-banner.js";
+import { HeaderMenu } from "./header-menu.js";
+import { HeaderNavigation } from "./header-navigation.js";
 
 export function Header() {
 	return (
