@@ -1,5 +1,5 @@
 {
-	"name": "dashboard",
+	"name": "web",
 	"version": "0.0.1",
 	"type": "module",
 	"private": true,
@@ -13,7 +13,6 @@
 	},
 	"dependencies": {
 		"@hookform/resolvers": "^5.2.2",
-		"@tanstack/react-table": "^8.21.3",
 		"@workspace/ui": "workspace:*",
 		"lucide-react": "^0.475.0",
 		"next": "^15.4.5",
@@ -23,9 +22,7 @@
 		"react": "^19.1.1",
 		"react-dom": "^19.1.1",
 		"react-hook-form": "^7.67.0",
-		"recharts": "2.15.4",
 		"sonner": "^2.0.7",
-		"use-debounce": "^10.0.6",
 		"zod": "^3.25.76"
 	},
 	"devDependencies": {
