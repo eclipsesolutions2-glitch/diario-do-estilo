@@ -4,20 +4,20 @@ import "@workspace/ui/globals.css";
 import { Providers } from "@/components/providers";
 
 const fontSans = Sora({
-  subsets: ["latin"],
-  variable: "--font-sans",
+	subsets: ["latin"],
+	variable: "--font-sans",
 });
 
 export default function RootLayout({
-  children,
+	children,
 }: Readonly<{
-  children: React.ReactNode;
+	children: React.ReactNode;
 }>) {
-  return (
-    <html lang="pt" suppressHydrationWarning>
-      <body className={`${fontSans.variable} font-sans antialiased `}>
-        <Providers>{children}</Providers>
-      </body>
-    </html>
-  );
+	return (
+		<html lang="pt" suppressHydrationWarning>
+			<body className={`${fontSans.variable} font-sans antialiased `}>
+				<Providers>{children}</Providers>
+			</body>
+		</html>
+	);
 }

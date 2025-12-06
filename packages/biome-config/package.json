@@ -1,0 +1,14 @@
+{
+	"name": "@workspace/biome-config",
+	"version": "1.0.0",
+	"type": "module",
+	"private": true,
+	"exports": {
+		".": "./biome.json",
+		"./next": "./next.json",
+		"./react": "./react.json"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "2.3.8"
+	}
+}

@@ -1,56 +1,57 @@
 "use server";
-import { Notification } from "@/core/schemas/notification";
 import {
-  ApiResponse,
-  ApiResponseBuilder,
+	type ApiResponse,
+	ApiResponseBuilder,
 } from "@workspace/ui/lib/mappers/api-response-builder.mapper";
 import { cookies } from "next/headers";
+import type { Notification } from "@/core/schemas/notification";
 import { env } from "@/lib/env";
+
 interface FindManyUnReadNotificationParams {
-  page?: number;
+	page?: number;
 }
 
 interface FindManyUnReadNotificationResponse {
-  data: Notification[];
-  current_page: number;
-  per_page: number;
-  total: number;
-  last_page: number;
+	data: Notification[];
+	current_page: number;
+	per_page: number;
+	total: number;
+	last_page: number;
 }
 
 export async function findManyUnReadNotificationAction({
-  page = 1,
+	page = 1,
 }: FindManyUnReadNotificationParams): Promise<ApiResponse<Notification[]>> {
-  const storage = await cookies();
-  const token = storage.get("dds-auth.session-token");
+	const storage = await cookies();
+	const token = storage.get("dds-auth.session-token");
 
-  if (!token) {
-    return ApiResponseBuilder.error("Precisa estar autenticado.");
-  }
+	if (!token) {
+		return ApiResponseBuilder.error("Precisa estar autenticado.");
+	}
 
-  try {
-    const { NEXT_PUBLIC_API_URL } = env;
-    const response = await fetch(
-      `${NEXT_PUBLIC_API_URL}/api/v1/auth/notifications/unread?page=${page}`,
-      {
-        method: "GET",
-        headers: {
-          Authorization: `Bearer ${token.value}`,
-        },
-      },
-    );
-    const json = (await response
-      .json()
-      .catch(() => null)) as FindManyUnReadNotificationResponse;
+	try {
+		const { NEXT_PUBLIC_API_URL } = env;
+		const response = await fetch(
+			`${NEXT_PUBLIC_API_URL}/api/v1/auth/notifications/unread?page=${page}`,
+			{
+				method: "GET",
+				headers: {
+					Authorization: `Bearer ${token.value}`,
+				},
+			},
+		);
+		const json = (await response
+			.json()
+			.catch(() => null)) as FindManyUnReadNotificationResponse;
 
-    if (!response.ok) {
-      const msg = "Algo correu mal ao tentar buscar as notificações";
-      return ApiResponseBuilder.error(msg);
-    }
-    return ApiResponseBuilder.success(json.data);
-  } catch (error) {
-    const errorMessage = "Falha ao buscar as notificações.";
-    console.error(`❌ ERROR: ${errorMessage}`, error);
-    return ApiResponseBuilder.error(errorMessage);
-  }
+		if (!response.ok) {
+			const msg = "Algo correu mal ao tentar buscar as notificações";
+			return ApiResponseBuilder.error(msg);
+		}
+		return ApiResponseBuilder.success(json.data);
+	} catch (error) {
+		const errorMessage = "Falha ao buscar as notificações.";
+		console.error(`❌ ERROR: ${errorMessage}`, error);
+		return ApiResponseBuilder.error(errorMessage);
+	}
 }

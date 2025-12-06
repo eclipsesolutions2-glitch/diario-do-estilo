@@ -1,15 +1,15 @@
 import type { Notification } from "@/core/schemas/notification";
 
 type NotificationItemContentProps = {
-  data: Notification;
+	data: Notification;
 };
 
 export function NotificationItemContent({
-  data,
+	data,
 }: NotificationItemContentProps) {
-  return (
-    <div>
-      <pre>{JSON.stringify(data, null, 2)}</pre>
-    </div>
-  );
+	return (
+		<div>
+			<pre>{JSON.stringify(data, null, 2)}</pre>
+		</div>
+	);
 }
