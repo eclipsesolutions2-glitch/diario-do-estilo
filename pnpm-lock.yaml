@@ -99,9 +99,6 @@ importers:
       '@hookform/resolvers':
         specifier: ^5.2.2
         version: 5.2.2(react-hook-form@7.68.0(react@19.2.1))
-      '@tanstack/react-table':
-        specifier: ^8.21.3
-        version: 8.21.3(react-dom@19.2.1(react@19.2.1))(react@19.2.1)
       '@workspace/ui':
         specifier: workspace:*
         version: link:../../packages/ui
@@ -129,15 +126,9 @@ importers:
       react-hook-form:
         specifier: ^7.67.0
         version: 7.68.0(react@19.2.1)
-      recharts:
-        specifier: 2.15.4
-        version: 2.15.4(react-dom@19.2.1(react@19.2.1))(react@19.2.1)
       sonner:
         specifier: ^2.0.7
         version: 2.0.7(react-dom@19.2.1(react@19.2.1))(react@19.2.1)
-      use-debounce:
-        specifier: ^10.0.6
-        version: 10.0.6(react@19.2.1)
       zod:
         specifier: ^3.25.76
         version: 3.25.76
