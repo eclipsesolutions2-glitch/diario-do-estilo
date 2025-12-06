@@ -106,7 +106,7 @@ export function TableListCategory({ data }: TableListCategoryProps) {
 				</Dialog>
 			</div>
 
-			<div className="rounded-md border max-md:hidden overflow-hidden">
+			<div className="rounded-md border overflow-hidden">
 				<Table>
 					<TableHeader>
 						{table.getHeaderGroups().map((group) => (

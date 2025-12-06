@@ -126,7 +126,7 @@ export function TableListArticle({ data }: TableListArticleProps) {
 			</div>
 
 			{/* Tabela */}
-			<div className="rounded-md border max-md:hidden overflow-hidden">
+			<div className="rounded-md border overflow-hidden">
 				<Table>
 					<TableHeader>
 						{table.getHeaderGroups().map((group) => (

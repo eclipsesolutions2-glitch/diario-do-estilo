@@ -6,9 +6,6 @@ import {
 	getFilteredRowModel,
 	useReactTable,
 } from "@tanstack/react-table";
-import { Plus, SearchX } from "lucide-react";
-import { parseAsInteger, useQueryState } from "nuqs";
-import { useState } from "react";
 import { Button } from "@workspace/ui/components/button";
 import {
 	Dialog,
@@ -27,10 +24,13 @@ import {
 	TableHeader,
 	TableRow,
 } from "@workspace/ui/components/table";
+import { Plus, SearchX } from "lucide-react";
+import { parseAsInteger, useQueryState } from "nuqs";
+import { useState } from "react";
+import { CreateUserForm } from "@/components/forms/user/create-user-form";
 import { useSearchColumnFilter } from "@/core/hooks/search-column-filter";
 import type { User } from "@/core/schemas/user";
 import { columns } from "./columns";
-import { CreateUserForm } from "@/components/forms/user/create-user-form";
 
 interface TableListUserProps {
 	data: User[];
@@ -109,7 +109,7 @@ export function TableListUser({ data }: TableListUserProps) {
 				</Dialog>
 			</div>
 
-			<div className="rounded-md border max-md:hidden overflow-hidden">
+			<div className="rounded-md border overflow-hidden">
 				<Table>
 					<TableHeader>
 						{table.getHeaderGroups().map((group) => (
