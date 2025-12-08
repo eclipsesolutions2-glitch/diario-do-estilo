@@ -9,7 +9,9 @@ export function NotificationItemContent({
 }: NotificationItemContentProps) {
 	return (
 		<div>
-			<pre>{JSON.stringify(data, null, 2)}</pre>
+			{/* <pre>{JSON.stringify(data, null, 2)}</pre> */}
+			<span>{data.message}</span>
+			<span>{data.created_at}</span>
 		</div>
 	);
 }

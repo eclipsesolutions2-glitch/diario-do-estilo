@@ -30,6 +30,7 @@ import { parseAsInteger, useQueryState } from "nuqs";
 import { useEffect, useState } from "react";
 import { ArticleForm } from "@/components/forms/article/create";
 import type { Article } from "@/core/schemas/article";
+import { ArticleCard } from "./article-card";
 import { columns } from "./columns";
 
 interface TableListArticleProps {
@@ -126,7 +127,7 @@ export function TableListArticle({ data }: TableListArticleProps) {
 			</div>
 
 			{/* Tabela */}
-			<div className="rounded-md border overflow-hidden">
+			<div className="rounded-md max-md:hidden border overflow-hidden">
 				<Table>
 					<TableHeader>
 						{table.getHeaderGroups().map((group) => (
@@ -183,6 +184,23 @@ export function TableListArticle({ data }: TableListArticleProps) {
 						)}
 					</TableBody>
 				</Table>
+			</div>
+
+			<div className="grid sm:grid-cols-2 gap-4 items-stretch md:hidden">
+				{table.getRowModel().rows.length ? (
+					table
+						.getRowModel()
+						.rows.map((row) => (
+							<ArticleCard key={row.id} data={row.original} />
+						))
+				) : (
+					<div className="flex flex-col sm:col-span-2 min-h-80 justify-center select-none items-center gap-2 text-muted-foreground">
+						<SearchX size={32} />
+						<span className="text-center">
+							Nenhum artigo encontrado
+						</span>
+					</div>
+				)}
 			</div>
 
 			{/* Footer */}

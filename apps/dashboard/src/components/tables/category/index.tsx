@@ -30,6 +30,7 @@ import { useState } from "react";
 import { CreateCategoryForm } from "@/components/forms/category/create-category-form";
 import { useSearchColumnFilter } from "@/core/hooks/search-column-filter";
 import type { Category } from "@/core/schemas/category";
+import { CategoryCard } from "./category-card";
 import { columns } from "./columns";
 
 interface TableListCategoryProps {
@@ -164,6 +165,23 @@ export function TableListCategory({ data }: TableListCategoryProps) {
 						)}
 					</TableBody>
 				</Table>
+			</div>
+
+			<div className="grid sm:grid-cols-2 gap-4 items-stretch md:hidden">
+				{table.getRowModel().rows.length ? (
+					table
+						.getRowModel()
+						.rows.map((row) => (
+							<CategoryCard key={row.id} data={row.original} />
+						))
+				) : (
+					<div className="flex flex-col sm:col-span-2 min-h-80 justify-center select-none items-center gap-2 text-muted-foreground">
+						<SearchX size={32} />
+						<span className="text-center">
+							Nenhuma categoria encontrada
+						</span>
+					</div>
+				)}
 			</div>
 
 			<div className="flex items-center justify-between py-4 text-sm text-muted-foreground">

@@ -31,6 +31,7 @@ import { CreateUserForm } from "@/components/forms/user/create-user-form";
 import { useSearchColumnFilter } from "@/core/hooks/search-column-filter";
 import type { User } from "@/core/schemas/user";
 import { columns } from "./columns";
+import { UserCard } from "./user-card";
 
 interface TableListUserProps {
 	data: User[];
@@ -165,6 +166,23 @@ export function TableListUser({ data }: TableListUserProps) {
 						)}
 					</TableBody>
 				</Table>
+			</div>
+
+			<div className="grid sm:grid-cols-2 gap-4 items-stretch md:hidden">
+				{table.getRowModel().rows.length ? (
+					table
+						.getRowModel()
+						.rows.map((row) => (
+							<UserCard key={row.id} data={row.original} />
+						))
+				) : (
+					<div className="flex flex-col sm:col-span-2 min-h-80 justify-center select-none items-center gap-2 text-muted-foreground">
+						<SearchX size={32} />
+						<span className="text-center">
+							Nenhum usuário encontrado
+						</span>
+					</div>
+				)}
 			</div>
 
 			<div className="flex items-center justify-between py-4 text-sm text-muted-foreground">
