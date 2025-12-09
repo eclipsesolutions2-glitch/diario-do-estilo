@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { SignInForm } from "@/components/forms/auth/sign-in.form";
+/* import { SignInForm } from "@/components/forms/auth/sign-in.form"; */
 
 export default function SignInPage() {
 	return (
@@ -32,7 +32,7 @@ export default function SignInPage() {
 							Faça login para começar a gerenciar o teu site.
 						</p>
 					</div>
-					<SignInForm />
+					{/* <SignInForm /> */}
 				</div>
 			</div>
 		</main>
