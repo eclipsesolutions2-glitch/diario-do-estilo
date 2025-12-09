@@ -6,10 +6,12 @@ import {
 
 const publicRoutes = [
 	{ path: "/", whenAuthenticated: "next" },
+	{ path: "/articles/*", whenAuthenticated: "next" },
 	{ path: "/sign-in", whenAuthenticated: "redirect" },
 	{ path: "/forgot", whenAuthenticated: "next" },
 	{ path: "/images", whenAuthenticated: "next" },
 ] as const;
+
 const REDIRECT_WHEN_NOT_AUTHENTICATED_ROUTE = "/sign-in";
 
 export function middleware(request: NextRequest) {
@@ -21,24 +23,23 @@ export function middleware(request: NextRequest) {
 		request.nextUrl.pathname.startsWith("/_next/static") ||
 		request.nextUrl.pathname.startsWith("/_next/image")
 	) {
-		return NextResponse.next({
-			request: {
-				headers: requestHeaders,
-			},
-		});
+		return NextResponse.next({ request: { headers: requestHeaders } });
 	}
 
 	const tokenName = "dds-auth.session-token";
 	const path = request.nextUrl.pathname;
-	const publicRoute = publicRoutes.find((route) => route.path === path);
 	const authToken = request.cookies.get(tokenName);
 
+	const publicRoute = publicRoutes.find((route) => {
+		if (route.path.endsWith("/*")) {
+			const basePath = route.path.replace("/*", "");
+			return path.startsWith(basePath);
+		}
+		return route.path === path;
+	});
+
 	if (!authToken && publicRoute) {
-		return NextResponse.next({
-			request: {
-				headers: requestHeaders,
-			},
-		});
+		return NextResponse.next({ request: { headers: requestHeaders } });
 	}
 
 	if (!authToken && !publicRoute) {
@@ -57,19 +58,7 @@ export function middleware(request: NextRequest) {
 		return NextResponse.redirect(redirectUrl);
 	}
 
-	if (authToken && !publicRoute) {
-		return NextResponse.next({
-			request: {
-				headers: requestHeaders,
-			},
-		});
-	}
-
-	return NextResponse.next({
-		request: {
-			headers: requestHeaders,
-		},
-	});
+	return NextResponse.next({ request: { headers: requestHeaders } });
 }
 
 export const config: MiddlewareConfig = {

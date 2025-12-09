@@ -1,0 +1,83 @@
+"use client";
+import { Button } from "@workspace/ui/components/button";
+import { Search, User } from "lucide-react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { LogoBrand } from "../logo-brand";
+import { HeaderMobile } from "./header-mobile";
+
+export function Header() {
+	const pathname = usePathname();
+	const links = [
+		{ href: "/", label: "Home" },
+		{ href: "/designers", label: "Designers" },
+		{ href: "/wonders", label: "Maravilhas" },
+		{ href: "/articles", label: "Editorial" },
+	];
+
+	const isActive = (path: string) => pathname === path;
+	return (
+		<nav className="sticky top-0 z-50 w-full bg-background/95 backdrop-blur-sm border-b border-border/40 transition-all duration-300">
+			<div className="container m-auto h-20 flex items-center justify-between">
+				{/* Mobile Menu */}
+				<div className="md:hidden">
+					<HeaderMobile links={links} onActive={isActive} />
+				</div>
+
+				{/* Desktop Links Left */}
+				<div className="hidden md:flex items-center gap-8">
+					{links.slice(0, 2).map((link) => (
+						<Link key={link.href} href={link.href}>
+							<span
+								className={`text-sm uppercase tracking-widest font-sans hover:text-primary transition-colors ${isActive(link.href) ? "text-primary font-medium" : "text-foreground"}`}
+							>
+								{link.label}
+							</span>
+						</Link>
+					))}
+				</div>
+
+				{/* Logo / Seal Center */}
+				<Link href="/">
+					<span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center group">
+						<LogoBrand />
+					</span>
+				</Link>
+
+				{/* Desktop Links Right + Actions */}
+				<div className="flex items-center gap-6">
+					<div className="hidden md:flex items-center gap-8">
+						{links.slice(2, 4).map((link) => (
+							<Link key={link.href} href={link.href}>
+								<span
+									className={`text-sm uppercase tracking-widest font-sans hover:text-primary transition-colors ${isActive(link.href) ? "text-primary font-medium" : "text-foreground"}`}
+								>
+									{link.label}
+								</span>
+							</Link>
+						))}
+					</div>
+
+					<div className="flex items-center gap-2 pl-4 border-l border-border/50 ml-4">
+						<Button
+							variant="ghost"
+							size="icon"
+							className="hover:text-primary hover:bg-transparent"
+						>
+							<Search className="h-5 w-5" />
+						</Button>
+						<Link href="/editor">
+							<Button
+								variant="ghost"
+								size="icon"
+								className="hover:text-primary hover:bg-transparent"
+							>
+								<User className="h-5 w-5" />
+							</Button>
+						</Link>
+					</div>
+				</div>
+			</div>
+		</nav>
+	);
+}
