@@ -1,11 +1,17 @@
 import { redirect } from "next/navigation";
 import { action } from "@/core/actions";
 
-export default async function ArticleDetails({ params }) {
+interface PageProps {
+	params: {
+		slug: string;
+	};
+}
+
+export default async function ArticleDetails({ params }: PageProps) {
 	if (!params.slug) {
 		return redirect("/");
 	}
-	const result = await action.api.article.findOne(params.slug);
+	const result = await action.api.article.findOne({ slug: params.slug });
 
 	if (!result.success) {
 		return <div>loading...</div>;
