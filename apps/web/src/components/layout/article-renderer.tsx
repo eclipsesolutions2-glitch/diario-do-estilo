@@ -85,17 +85,6 @@ export function ArticleRenderer({ data: article }: ArticleRendererProps) {
 					// biome-ignore lint/security/noDangerouslySetInnerHtml: false
 					dangerouslySetInnerHTML={{ __html: article.content }}
 				/>
-
-				<div className="flex justify-center my-20">
-					<div className="relative h-20 w-40">
-						<Image
-							src="/images/logotipo-text.webp"
-							alt="Logo do Diario do Estilo"
-							fill
-							className="-ml-2 object-cover"
-						/>
-					</div>
-				</div>
 			</div>
 		</article>
 	);

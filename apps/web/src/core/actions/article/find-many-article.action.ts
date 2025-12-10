@@ -36,7 +36,6 @@ export async function findManyArticleAction(): Promise<
 			const msg = "Algo correu mal ao tentar buscar artigos";
 			return ApiResponseBuilder.error(msg);
 		}
-		console.log({ json });
 		return ApiResponseBuilder.success(json);
 	} catch (error) {
 		const errorMessage = "Falha ao buscar artigos";

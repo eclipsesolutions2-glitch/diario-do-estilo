@@ -10,8 +10,25 @@ interface ArticleGridListProps {
 
 export function ArticleGridList({ data }: ArticleGridListProps) {
 	return (
-		<div className="space-y-12">
-			{/* Grid */}
+		<section>
+			<div className="grid grid-cols-1 md:grid-cols-3 gap-x-8 gap-y-16">
+				{data.map((article, idx) => (
+					<motion.div
+						key={article.id}
+						initial={{ opacity: 0, y: 30 }}
+						whileInView={{ opacity: 1, y: 0 }}
+						viewport={{ once: true }}
+						transition={{ delay: idx * 0.1 }}
+					>
+						<ArticleCard article={article} />
+					</motion.div>
+				))}
+			</div>
+		</section>
+	);
+}
+
+/* <div className="space-y-12">
 			<div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-x-10 gap-y-20">
 				{data.length > 0 ? (
 					data.map((article, idx) => (
@@ -45,6 +62,4 @@ export function ArticleGridList({ data }: ArticleGridListProps) {
 					</motion.div>
 				)}
 			</div>
-		</div>
-	);
-}
+		</div> */

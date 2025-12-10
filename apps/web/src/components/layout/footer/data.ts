@@ -1,19 +1,19 @@
-export const FOOTER_CATEGORIES_LIST = [
+export const FOOTER_SOCIAL_LIST = [
 	{
-		label: "Moda Africana",
-		href: "/category/",
+		label: "Instagram",
+		href: "https://www.instagram.com/diario_do_estilo?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
 	},
 	{
-		label: "Tendências",
-		href: "/category/",
+		label: "Facebook",
+		href: "https://facebook.com",
 	},
 	{
-		label: "Cultura",
-		href: "/category/",
+		label: "TikTok",
+		href: "https://www.tiktok.com/@dirio.do.estilo?is_from_webapp=1&sender_device=pc",
 	},
 	{
-		label: "Crítica Social",
-		href: "/category/",
+		label: "Youtube",
+		href: "https://youtube.com/@diariodoestilo12?si=_vaPP_7mRoHObGzm",
 	},
 ];
 

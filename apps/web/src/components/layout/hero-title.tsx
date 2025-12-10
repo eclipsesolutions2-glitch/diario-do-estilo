@@ -17,7 +17,7 @@ export function HeroTitle({
 	showLogo = true,
 }: HeroTitleProps) {
 	return (
-		<section className="py-20 md:py-32 container-editorial relative overflow-hidden">
+		<section className="py-20 md:py-28 container-editorial relative overflow-hidden">
 			{showLogo && (
 				<div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-[0.03] pointer-events-none">
 					<LogoBrand />
