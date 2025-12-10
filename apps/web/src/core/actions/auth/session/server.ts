@@ -1,0 +1,51 @@
+"use server";
+import {
+	type ApiResponse,
+	ApiResponseBuilder,
+} from "@workspace/ui/lib/mappers/api-response-builder.mapper";
+import { revalidatePath } from "next/cache";
+import { cookies } from "next/headers";
+import type { UserProfile } from "@/core/schemas/user";
+import { env } from "@/lib/env";
+
+interface GetSessionResponse {
+	message: string;
+	user: UserProfile;
+}
+
+export async function getSession(): Promise<ApiResponse<UserProfile>> {
+	const storage = await cookies();
+	const token = storage.get("dds-auth.session-token");
+
+	if (!token) {
+		return ApiResponseBuilder.error("Precisa estar autenticado.");
+	}
+	try {
+		const { NEXT_PUBLIC_API_URL } = env;
+		const response = await fetch(
+			`${NEXT_PUBLIC_API_URL}/api/v1/auth/validate-token`,
+			{
+				method: "GET",
+				headers: {
+					Authorization: `Bearer ${token.value}`,
+					Accept: "aplication/json",
+				},
+			},
+		);
+
+		const json = (await response
+			.json()
+			.catch(() => null)) as GetSessionResponse;
+		if (!response.ok) {
+			const msg = "Usuário não autenticado";
+			return ApiResponseBuilder.error(msg);
+		}
+
+		revalidatePath("/", "page");
+		return ApiResponseBuilder.success(json.user);
+	} catch (error) {
+		const errorMessage = "Erro inesperado ao buscar dados usuário";
+		console.error(`❌ ERROR: ${errorMessage}`, error);
+		return ApiResponseBuilder.error(errorMessage);
+	}
+}

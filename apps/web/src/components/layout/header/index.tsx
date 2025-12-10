@@ -9,10 +9,10 @@ import { HeaderUser } from "./header-user";
 export function Header() {
 	const pathname = usePathname();
 	const links = [
-		{ href: "/", label: "Home" },
-		{ href: "/designers", label: "Designers" },
-		{ href: "/wonders", label: "Maravilhas" },
-		{ href: "/articles", label: "Editorial" },
+		{ href: "/", label: "Ínicio" },
+		{ href: "/articles", label: "Artigos" },
+		{ href: "/about", label: "Quem Somos" },
+		{ href: "/contact", label: "Contactos" },
 	];
 
 	const isActive = (path: string) => pathname === path;

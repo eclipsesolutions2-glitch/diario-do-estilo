@@ -15,17 +15,20 @@ import {
 import { formatInitials } from "@workspace/ui/lib/formats/format-initials";
 import { LogOut, User } from "lucide-react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { toast } from "sonner";
+import { action } from "@/core/actions";
 
 export function HeaderUser() {
-	const user = null;
+	const { user } = action.api.auth.useSession();
 	return (
 		<div>
 			{user ? (
 				<HeaderUserDropdown
 					data={{
-						name: "",
-						email: "",
-						image: "",
+						name: user.name,
+						email: user.email,
+						image: user.avatar_url,
 					}}
 				/>
 			) : (
@@ -48,7 +51,18 @@ interface HeaderUserDropdownProps {
 }
 
 function HeaderUserDropdown({ data: user }: HeaderUserDropdownProps) {
-	const handleSignOut = async () => {};
+	const router = useRouter();
+	const handleSignOut = async () => {
+		const result = await action.api.auth.signOut();
+		if (!result.success) {
+			toast.error(result.error);
+			return;
+		}
+
+		toast.success(result.message);
+		router.push("/");
+		router.refresh();
+	};
 	return (
 		<DropdownMenu>
 			<DropdownMenuTrigger asChild>
@@ -61,8 +75,8 @@ function HeaderUserDropdown({ data: user }: HeaderUserDropdownProps) {
 					</Avatar>
 				</Button>
 			</DropdownMenuTrigger>
-			<DropdownMenuContent align="end" className="w-56">
-				<div className="px-2 py-1.5">
+			<DropdownMenuContent align="end" className="w-56 mt-6 rounded-none">
+				<div className="px-4 pt-4 pb-2">
 					<p className="text-sm font-medium">
 						{user?.name || "Usuário"}
 					</p>
@@ -70,11 +84,17 @@ function HeaderUserDropdown({ data: user }: HeaderUserDropdownProps) {
 						{user?.email || "user@example.com"}
 					</p>
 				</div>
-				<DropdownMenuItem asChild>
-					<Link href="/profile">Perfil</Link>
+				<DropdownMenuSeparator />
+				<DropdownMenuItem asChild className="rounded-none">
+					<Link href="/profile" className="px-4 py-2">
+						Perfil
+					</Link>
 				</DropdownMenuItem>
 				<DropdownMenuSeparator />
-				<DropdownMenuItem onClick={handleSignOut}>
+				<DropdownMenuItem
+					onClick={handleSignOut}
+					className="rounded-none px-4 py-2"
+				>
 					<LogOut />
 					<span>Terminar Sessão</span>
 				</DropdownMenuItem>
