@@ -1,6 +1,8 @@
 import { Card, CardContent } from "@workspace/ui/components/card";
 import { AlertCircle } from "lucide-react";
 
+export const dynamic = "force-dynamic";
+
 export default function NotFound() {
 	return (
 		<div className="min-h-screen w-full flex items-center justify-center bg-neutral-50">
@@ -12,7 +14,6 @@ export default function NotFound() {
 							404 Page Not Found
 						</h1>
 					</div>
-
 					<p className="mt-4 text-sm text-neutral-600">
 						Did you forget to add the page to the router?
 					</p>
