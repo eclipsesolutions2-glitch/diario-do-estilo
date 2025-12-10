@@ -3,7 +3,6 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { LogoBrand } from "../logo-brand";
 import { HeaderMobile } from "./header-mobile";
-import { HeaderSearch } from "./header-search";
 import { HeaderUser } from "./header-user";
 
 export function Header() {
@@ -55,7 +54,7 @@ export function Header() {
 					</div>
 
 					<div className="flex items-center gap-2 pl-4 border-l border-border/50 ml-4">
-						<HeaderSearch />
+						{/* <HeaderSearch /> */}
 						<HeaderUser />
 					</div>
 				</div>
