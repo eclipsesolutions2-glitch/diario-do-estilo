@@ -32,6 +32,11 @@ export function ArticleCard({ article, featured = false }: ArticleCardProps) {
 					{featured && (
 						<div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent" />
 					)}
+					<div className="absolute top-4 left-4">
+						<span className="inline-block px-2 py-1 text-[10px] font-bold tracking-[0.2em] text-foreground uppercase bg-background/90 backdrop-blur-sm">
+							{article.categories[0]}
+						</span>
+					</div>
 				</div>
 
 				{/* Conteúdo */}
@@ -67,7 +72,7 @@ export function ArticleCard({ article, featured = false }: ArticleCardProps) {
 									{authorName}
 								</span>
 								<span className="font-serif italic text-primary">
-									0 leitura
+									{article.view_count} visualizações
 								</span>
 							</div>
 						</>

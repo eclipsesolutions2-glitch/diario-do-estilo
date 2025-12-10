@@ -21,7 +21,7 @@ export function BrandTicker() {
 								key={`${loopIndex}-${i + 1}`}
 								className="text-6xl md:text-8xl font-display uppercase tracking-tighter opacity-80 hover:opacity-100 transition-opacity cursor-default"
 							>
-								Maravilhas Africanas —
+								Diário do Estilo —
 							</span>
 						)),
 					)}

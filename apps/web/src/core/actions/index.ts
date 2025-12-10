@@ -1,4 +1,5 @@
 import { findManyArticleAction } from "./article/find-many-article.action";
+import { findManyFeaturedArticleAction } from "./article/find-many-featured-article.action";
 import { findOneArticleAction } from "./article/find-one-article.action";
 
 export const action = {
@@ -13,6 +14,7 @@ export const action = {
 		article: {
 			findMany: findManyArticleAction,
 			findOne: findOneArticleAction,
+			findFeatured: findManyFeaturedArticleAction,
 		},
 	},
 };

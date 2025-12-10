@@ -9,8 +9,12 @@ export interface Article {
 	is_published: boolean;
 	is_featured: boolean;
 	published_at?: string;
+	created_at: string;
+	updated_at: string;
 	view_count: number;
 	cover_image?: string;
+	gallery: string[];
+	categories: string[];
 }
 
 interface Author {

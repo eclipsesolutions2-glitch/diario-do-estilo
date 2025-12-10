@@ -1,4 +1,5 @@
 import { redirect } from "next/navigation";
+import { ArticleRenderer } from "@/components/layout/article-renderer";
 import { action } from "@/core/actions";
 
 type PageProps = {
@@ -13,16 +14,18 @@ export default async function ArticleDetails({ params }: PageProps) {
 	if (!slug) {
 		redirect("/");
 	}
+
 	const result = await action.api.article.findOne({ slug });
 
-	if (!result.success) {
-		return <div>loading...</div>;
+	if (!result.success || !result.data) {
+		return (
+			<div className="min-h-screen flex items-center justify-center text-muted">
+				Não foi possível carregar o artigo
+			</div>
+		);
 	}
 
-	return (
-		<div>
-			<pre>{JSON.stringify({ params }, null, 2)}</pre>
-			<pre>{JSON.stringify({ result }, null, 2)}</pre>
-		</div>
-	);
+	const article = result.data;
+
+	return <ArticleRenderer data={article} />;
 }

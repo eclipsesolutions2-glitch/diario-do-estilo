@@ -1,10 +1,10 @@
 "use client";
-import { Button } from "@workspace/ui/components/button";
-import { Search, User } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { LogoBrand } from "../logo-brand";
 import { HeaderMobile } from "./header-mobile";
+import { HeaderSearch } from "./header-search";
+import { HeaderUser } from "./header-user";
 
 export function Header() {
 	const pathname = usePathname();
@@ -59,22 +59,8 @@ export function Header() {
 					</div>
 
 					<div className="flex items-center gap-2 pl-4 border-l border-border/50 ml-4">
-						<Button
-							variant="ghost"
-							size="icon"
-							className="hover:text-primary hover:bg-transparent"
-						>
-							<Search className="h-5 w-5" />
-						</Button>
-						<Link href="/editor">
-							<Button
-								variant="ghost"
-								size="icon"
-								className="hover:text-primary hover:bg-transparent"
-							>
-								<User className="h-5 w-5" />
-							</Button>
-						</Link>
+						<HeaderSearch />
+						<HeaderUser />
 					</div>
 				</div>
 			</div>

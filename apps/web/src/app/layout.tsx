@@ -16,10 +16,20 @@ const fontDisplayy = Italiana({
 });
 
 export const metadata: Metadata = {
-	title: "Diario do Estilo",
-	icons: {
-		icon: ["/logotipo-d-t-white.webp"],
+	title: {
+		default: "Diário do Estilo",
+		template: "%s | Diário do Estilo",
 	},
+
+	description:
+		"Diário do Estilo — Moda, lifestyle e tendências com conteúdo exclusivo.",
+
+	icons: {
+		icon: [{ url: "/logotipo-d-t-white.webp", type: "image/webp" }],
+		apple: [{ url: "/logotipo-d-t-white.webp" }],
+	},
+
+	keywords: [],
 };
 
 export default function RootLayout({
@@ -30,7 +40,7 @@ export default function RootLayout({
 	return (
 		<html lang="pt" suppressHydrationWarning>
 			<body
-				className={`${fontSans.variable} ${fontDisplayy.variable} font-sans antialiased `}
+				className={`${fontSans.variable} ${fontDisplayy.variable} text-brand-950 font-sans antialiased `}
 			>
 				<Providers>{children}</Providers>
 			</body>
