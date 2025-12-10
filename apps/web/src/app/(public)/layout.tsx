@@ -1,12 +1,14 @@
-import { Footer } from "@/components/layout/footer";
-import { Header } from "@/components/layout/header";
+import { ArticleTag } from "@/components/layout/article-tag";
 
-export default function LayoutR({ children }: { children: React.ReactNode }) {
+export default function ArticleLayout({
+	children,
+}: {
+	children: React.ReactNode;
+}) {
 	return (
-		<div className="min-h-screen flex flex-col">
-			<Header />
-			<main className="flex-1">{children}</main>
-			<Footer />
+		<div>
+			{children}
+			<ArticleTag />
 		</div>
 	);
 }

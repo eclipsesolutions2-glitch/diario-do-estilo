@@ -13,3 +13,7 @@
 	--brand-800: oklch(0.317 0.291 187);
 	--brand-900: oklch(0.182 0.269 187);
 }
+
+body {
+	@apply selection:bg-primary selection:text-white;
+}

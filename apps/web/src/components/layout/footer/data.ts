@@ -20,11 +20,11 @@ export const FOOTER_SOCIAL_LIST = [
 export const FOOTER_ABOUT_LIST = [
 	{
 		label: "Quem Somos",
-		href: "/about",
+		href: "/about-us",
 	},
 	{
 		label: "Equipe",
-		href: "/about#team",
+		href: "/about-us#team",
 	},
 	{
 		label: "Contato",
@@ -32,6 +32,6 @@ export const FOOTER_ABOUT_LIST = [
 	},
 	{
 		label: "Anuncie",
-		href: "/contact#",
+		href: "/advertise",
 	},
 ];

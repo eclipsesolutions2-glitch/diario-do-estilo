@@ -11,7 +11,7 @@ export function Header() {
 	const links = [
 		{ href: "/", label: "Ínicio" },
 		{ href: "/articles", label: "Artigos" },
-		{ href: "/about", label: "Quem Somos" },
+		{ href: "/about-us", label: "Quem Somos" },
 		{ href: "/contact", label: "Contactos" },
 	];
 
@@ -19,12 +19,10 @@ export function Header() {
 	return (
 		<nav className="sticky top-0 z-50 w-full bg-background/95 backdrop-blur-sm border-b border-border/40 transition-all duration-300">
 			<div className="container m-auto h-20 flex items-center justify-between">
-				{/* Mobile Menu */}
 				<div className="md:hidden">
 					<HeaderMobile links={links} onActive={isActive} />
 				</div>
 
-				{/* Desktop Links Left */}
 				<div className="hidden md:flex items-center gap-8">
 					{links.slice(0, 2).map((link) => (
 						<Link key={link.href} href={link.href}>
@@ -37,14 +35,12 @@ export function Header() {
 					))}
 				</div>
 
-				{/* Logo / Seal Center */}
 				<Link href="/">
 					<span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center group">
 						<LogoBrand />
 					</span>
 				</Link>
 
-				{/* Desktop Links Right + Actions */}
 				<div className="flex items-center gap-6">
 					<div className="hidden md:flex items-center gap-8">
 						{links.slice(2, 4).map((link) => (
