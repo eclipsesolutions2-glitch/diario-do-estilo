@@ -7,6 +7,7 @@ import {
 const publicRoutes = [
 	{ path: "/", whenAuthenticated: "next" },
 	{ path: "/articles/*", whenAuthenticated: "next" },
+	{ path: "/terms/*", whenAuthenticated: "next" },
 	{ path: "/sign-in", whenAuthenticated: "redirect" },
 	{ path: "/register", whenAuthenticated: "redirect" },
 	{ path: "/forgot", whenAuthenticated: "next" },
