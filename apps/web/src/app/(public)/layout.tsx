@@ -1,6 +1,6 @@
 import { ArticleTag } from "@/components/layout/article-tag";
 
-export default function ArticleLayout({
+export default function PublicLayout({
 	children,
 }: {
 	children: React.ReactNode;
