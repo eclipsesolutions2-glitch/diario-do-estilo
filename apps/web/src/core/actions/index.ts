@@ -1,3 +1,4 @@
+import { createArticleAction } from "./article/create-article.action";
 import { findManyArticleAction } from "./article/find-many-article.action";
 import { findManyFeaturedArticleAction } from "./article/find-many-featured-article.action";
 import { findOneArticleAction } from "./article/find-one-article.action";
@@ -17,6 +18,7 @@ export const action = {
 			register: registerUserAction,
 		},
 		article: {
+			create: createArticleAction,
 			findMany: findManyArticleAction,
 			findOne: findOneArticleAction,
 			findFeatured: findManyFeaturedArticleAction,

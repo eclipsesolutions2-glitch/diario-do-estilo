@@ -8,10 +8,15 @@ import { HeaderUser } from "./header-user";
 export function Header() {
 	const pathname = usePathname();
 	const links = [
-		{ href: "/", label: "Ínicio" },
-		{ href: "/articles", label: "Artigos" },
-		{ href: "/about-us", label: "Quem Somos" },
-		{ href: "/contact", label: "Contactos" },
+		{ href: "/", label: "Ínicio", whenAuthenticated: "next" },
+		{ href: "/articles", label: "Artigos", whenAuthenticated: "next" },
+		{ href: "/about-us", label: "Quem Somos", whenAuthenticated: "next" },
+		{ href: "/contact", label: "Contactos", whenAuthenticated: "next" },
+		{
+			href: "/articles/editor",
+			label: "Editorial",
+			whenAuthenticated: "redirect",
+		},
 	];
 
 	const isActive = (path: string) => pathname === path;
