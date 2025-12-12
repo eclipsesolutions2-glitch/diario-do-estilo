@@ -1,4 +1,11 @@
-import { FileText, Home, LayoutGrid, UserSquare, Users2 } from "lucide-react";
+import {
+	FileText,
+	Home,
+	LayoutGrid,
+	Newspaper,
+	UserSquare,
+	Users2,
+} from "lucide-react";
 
 export const NAV_LINKS = {
 	geral: [
@@ -32,7 +39,7 @@ export const NAV_LINKS = {
 		{
 			label: "Newsletter",
 			href: "/newsletters",
-			icon: UserSquare,
+			icon: Newspaper,
 		},
 	],
 };
