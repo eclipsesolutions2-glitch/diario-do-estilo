@@ -28,3 +28,29 @@ export const DESIGNERS = [
 		image: "/images/",
 	},
 ];
+export const LIST_TEAMS = [
+	{
+		id: "1",
+		name: "Amara Johnson",
+		role: "Fundadora & Diretora Criativa",
+		location: "Nigéria",
+		style: "Artesanal",
+		image: "/images/fashion_portrait_editorial.png",
+	},
+	{
+		id: "2",
+		name: "Kwame Mensah",
+		role: "Designer Têxtil",
+		location: "Gana",
+		style: "Estamparia Africana",
+		image: "/images/african_architecture_fashion.png",
+	},
+	{
+		id: "3",
+		name: "Zuri Bakari",
+		role: "Chefe de Produção",
+		location: "Quênia",
+		style: "Alta-costura",
+		image: "/images/hero_african_fashion.png",
+	},
+];

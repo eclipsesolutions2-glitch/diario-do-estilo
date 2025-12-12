@@ -1,3 +1,5 @@
+import Image from "next/image";
+import { LIST_TEAMS } from "@/components/home/data";
 import { HeroTitle } from "@/components/layout/hero-title";
 
 export default function AboutUsPage() {
@@ -130,6 +132,50 @@ export default function AboutUsPage() {
 							arquitetura e identidade africana contemporânea.
 						</p>
 					</div>
+				</div>
+			</section>
+
+			{/* Equipe */}
+			<section className="max-w-5xl mx-auto mb-32">
+				<div className="mb-20">
+					<h2 className="text-5xl font-serif text-center mb-5">
+						Nossa Equipa
+					</h2>
+					<p className="font-serif text-center text-lg text-muted-foreground leading-relaxed italic">
+						Conheça as pessoas apaixonadas que tornam o Diário Do
+						Estilo possível.
+					</p>
+				</div>
+
+				<div className="grid md:grid-cols-2 lg:grid-cols-3 gap-12">
+					{LIST_TEAMS.map((team) => (
+						<div
+							key={team.id}
+							className="relative aspect-3/4 group overflow-hidden cursor-pointer"
+						>
+							<Image
+								src={team.image}
+								alt={team.name}
+								fill
+								className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+							/>
+
+							{/* Overlay */}
+							<div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col items-center justify-center text-center p-4">
+								<h3 className="text-white font-serif text-2xl italic">
+									{team.name}
+								</h3>
+
+								<span className="text-white/90 text-sm tracking-wide mt-1">
+									{team.role}
+								</span>
+
+								<span className="text-white/80 text-xs uppercase tracking-widest mt-2">
+									{team.location} — {team.style}
+								</span>
+							</div>
+						</div>
+					))}
 				</div>
 			</section>
 		</div>
