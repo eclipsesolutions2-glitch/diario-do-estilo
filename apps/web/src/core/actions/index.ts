@@ -7,6 +7,7 @@ import { useSession } from "./auth/session/client";
 import { getSession } from "./auth/session/server";
 import { signInAction } from "./auth/sign-in.action";
 import { signOutAction } from "./auth/sign-out.action";
+import { subscribeNewsLatterAction } from "./newslatter/subscribe-in-newslatter.actio";
 
 export const action = {
 	api: {
@@ -22,6 +23,9 @@ export const action = {
 			findMany: findManyArticleAction,
 			findOne: findOneArticleAction,
 			findFeatured: findManyFeaturedArticleAction,
+		},
+		newslatter: {
+			subscribe: subscribeNewsLatterAction,
 		},
 	},
 };
