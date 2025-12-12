@@ -29,5 +29,10 @@ export const NAV_LINKS = {
 			href: "/account",
 			icon: UserSquare,
 		},
+		{
+			label: "Newsletter",
+			href: "/newsletters",
+			icon: UserSquare,
+		},
 	],
 };

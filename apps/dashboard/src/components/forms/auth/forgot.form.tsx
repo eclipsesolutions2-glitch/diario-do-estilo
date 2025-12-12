@@ -11,7 +11,6 @@ import {
 } from "@workspace/ui/components/form";
 import { Input } from "@workspace/ui/components/input";
 import { Spinner } from "@workspace/ui/components/spinner";
-import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
@@ -21,7 +20,7 @@ import {
 	signInSchema,
 } from "@/core/schemas/auth/sign-in.schema";
 
-export const SignInForm = () => {
+export const ForgotForm = () => {
 	const router = useRouter();
 	const form = useForm<SignInSchemaValues>({
 		mode: "all",
@@ -64,36 +63,6 @@ export const SignInForm = () => {
 									autoComplete="email"
 									aria-autocomplete="list"
 									{...field}
-									className="h-12 rounded-none"
-								/>
-							</FormControl>
-							<FormMessage className="text-xs text-destructive" />
-						</FormItem>
-					)}
-				/>
-
-				<FormField
-					control={form.control}
-					name="password"
-					render={({ field }) => (
-						<FormItem className="space-y-2">
-							<div className="flex items-center justify-between">
-								<FormLabel className="text-sm uppercase tracking-wide text-muted-foreground">
-									Senha
-								</FormLabel>
-								<Link
-									href="/forgot"
-									className="text-sm text-primary hover:text-brand-700 hover:underline"
-									as="/forgot"
-								>
-									Esqueceu a senha?
-								</Link>
-							</div>
-							<FormControl>
-								<Input
-									{...field}
-									type="password"
-									placeholder="********"
 									className="h-12 rounded-none"
 								/>
 							</FormControl>
