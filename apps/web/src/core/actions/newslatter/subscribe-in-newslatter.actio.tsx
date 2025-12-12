@@ -1,17 +1,18 @@
+"use server";
 import {
 	type ApiResponse,
 	ApiResponseBuilder,
 } from "@workspace/ui/lib/mappers/api-response-builder.mapper";
 import {
-	type SubscribeNewsLatterSchemaValues,
-	subscribeNewsLatterSchema,
-} from "@/core/schemas/newslatter.schama";
+	type SubscribeNewsLetterSchemaValues,
+	subscribeNewsLetterSchema,
+} from "@/core/schemas/newsletter.schama";
 import { env } from "@/lib/env";
 
-export async function subscribeNewsLatterAction(
-	data: SubscribeNewsLatterSchemaValues,
-): Promise<ApiResponse<any>> {
-	const parsed = subscribeNewsLatterSchema.safeParse(data);
+export async function subscribeNewsLetterAction(
+	data: SubscribeNewsLetterSchemaValues,
+): Promise<ApiResponse<boolean>> {
+	const parsed = subscribeNewsLetterSchema.safeParse(data);
 	if (!parsed.success) {
 		return ApiResponseBuilder.error(parsed.error.message);
 	}
@@ -36,12 +37,21 @@ export async function subscribeNewsLatterAction(
 		if (!response.ok) {
 			const json = await response.text().catch(() => null);
 			return ApiResponseBuilder.error(
-				json ?? "Algo correu mal ao tentar criar um artigo",
+				json ??
+					"Algo correu mal ao tentar sobrescrever-se na newsletter",
 			);
 		}
-		return ApiResponseBuilder.success({});
+		return ApiResponseBuilder.success(
+			true,
+			"Sobrescrição na newsletter bem sucedida",
+		);
 	} catch (error) {
-		console.error("❌ ERROR: Falha ao criar um artigo", error);
-		return ApiResponseBuilder.error("Falha ao criar um artigo");
+		console.error(
+			"❌ ERROR: Falha ao sobrescrever-se na newsletter",
+			error,
+		);
+		return ApiResponseBuilder.error(
+			"Falha ao sobrescrever-se na newsletter",
+		);
 	}
 }

@@ -1,4 +1,5 @@
-import { NewsLatterForm } from "@/components/forms/news-latter-form";
+import { Button } from "@workspace/ui/components/button";
+import Link from "next/link";
 
 export function FooterNewsletterForm() {
 	return (
@@ -6,7 +7,9 @@ export function FooterNewsletterForm() {
 			<p className="font-sans text-sm /> mb-4">
 				Inscreva-se para receber a curadoria semanal.
 			</p>
-			<NewsLatterForm />
+			<Link href="/newsletter">
+				<Button className="rounded-none">Inscrever-se</Button>
+			</Link>
 		</div>
 	);
 }

@@ -8,6 +8,7 @@ const publicRoutes = [
 	{ path: "/", whenAuthenticated: "next" },
 	{ path: "/about-us", whenAuthenticated: "next" },
 	{ path: "/contact", whenAuthenticated: "next" },
+	{ path: "/newsletter", whenAuthenticated: "next" },
 	{ path: "/advertise", whenAuthenticated: "next" },
 	{ path: "/articles/*", whenAuthenticated: "next" },
 	{ path: "/terms/*", whenAuthenticated: "next" },
