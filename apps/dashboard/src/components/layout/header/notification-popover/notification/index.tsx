@@ -6,6 +6,8 @@ import {
 } from "@workspace/ui/components/popover";
 import { ScrollArea } from "@workspace/ui/components/scroll-area";
 import { Ban, Bell, Home, Inbox, Star } from "lucide-react";
+import { toast } from "sonner";
+import { action } from "@/core/actions";
 import type { Notification } from "@/core/schemas/notification";
 import {
 	NotificationItem,
@@ -22,7 +24,10 @@ export function NotificationToggle({
 	data: notifications,
 	onMarkAllAsRead,
 }: NotificationToggleProps) {
-	const isRead = true;
+	const isRead = notifications.filter((n) => n.read_at).length > 0;
+	function openAction(url: string) {
+		window.location.href = url;
+	}
 	return (
 		<Popover>
 			<PopoverTrigger asChild>
@@ -71,6 +76,18 @@ export function NotificationToggle({
 											/>
 											<NotificationItemContent
 												data={notification}
+												onOpenAction={openAction}
+												onMarkAsRead={(n) => {
+													action.api.notification
+														.markOneRead({
+															notificationId: +n,
+														})
+														.catch(() => {
+															toast.error(
+																"Falha ao marcar como lida",
+															);
+														});
+												}}
 											/>
 										</NotificationItem>
 									))}
