@@ -5,7 +5,7 @@ export const FOOTER_SOCIAL_LIST = [
 	},
 	{
 		label: "Facebook",
-		href: "https://facebook.com",
+		href: "https://www.facebook.com/profile.php?id=61570118655894",
 	},
 	{
 		label: "TikTok",
